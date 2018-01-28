@@ -12,7 +12,7 @@ typedef map<MapOne_Regions,std::vector<Races>> LocationToRacesMap;
 
 class TheGame {
 
-    std::vector<Races> contains(MapOne_Regions region) {
+    std::vector<Races> containsRaces(MapOne_Regions region) {
 
         if(region == MapOne_Regions::MOUNTAIN_ONE) {
 
