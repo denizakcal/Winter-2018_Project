@@ -11,14 +11,24 @@ typedef map<MapOne_Regions,std::vector<Races>> LocationToRacesMap;
 
 class TheGame {
 
-  std::vector<Races> contains(MapOne_Regions region) {
+    std::vector<Races> contains(MapOne_Regions region) {
 
-    if(region == MapOne_Regions::MOUNTAIN_ONE) {
-      LocationToRacesMap locationToRacesMap;
+        if(region == MapOne_Regions::MOUNTAIN_ONE) {
 
-      return locationToRacesMap[region];
+            LocationToRacesMap locationToRacesMap;
+
+            return locationToRacesMap[region];
+        }
     }
-  }
+
+    int dieroll(void) {
+
+        int r;
+        srand(time(NULL));
+        r = rand()%6+1;
+
+        return r;
+    }
 };
 
 int main()
