@@ -1,32 +1,45 @@
 #include <iostream>
 #include <Races.h>
 #include <map>
-#include <Regions.h>
+#include <MapOne_Regions.h>
 #include <vector>
 
 using namespace std;
 
-typedef map<Regions,std::vector<Regions>> GraphOfRegions;
+typedef map<MapOne_Regions,std::vector<MapOne_Regions>> GraphOfRegions;
+typedef map<MapOne_Regions,std::vector<Races>> LocationToRacesMap;
+
+class TheGame {
+
+  std::vector<Races> contains(MapOne_Regions region) {
+
+    if(region == MapOne_Regions::MOUNTAIN_ONE) {
+      LocationToRacesMap locationToRacesMap;
+
+      return locationToRacesMap[region];
+    }
+  }
+};
 
 int main()
 {
 
     GraphOfRegions g;
-    Regions regionsArray[2];
-    regionsArray[0] = Regions::MOUNTAIN_TWO;
-    regionsArray[1] = Regions::MOUNTAIN_THREE;
+    MapOne_Regions regionsArray[2];
+    regionsArray[0] = MapOne_Regions::MOUNTAIN_TWO;
+    regionsArray[1] = MapOne_Regions::MOUNTAIN_THREE;
 
-    std::vector<Regions> regionsVector;
-    regionsVector.push_back(Regions::MOUNTAIN_TWO);
-    regionsVector.push_back(Regions::MOUNTAIN_THREE);
+    std::vector<MapOne_Regions> regionsVector;
+    regionsVector.push_back(MapOne_Regions::MOUNTAIN_TWO);
+    regionsVector.push_back(MapOne_Regions::MOUNTAIN_THREE);
 
-    g[Regions::MOUNTAIN_ONE] = regionsVector;
+    g[MapOne_Regions::MOUNTAIN_ONE] = regionsVector;
 
-    if( g[Regions::MOUNTAIN_ONE].at(0) == Regions::MOUNTAIN_ONE) {
+    if( g[MapOne_Regions::MOUNTAIN_ONE].at(0) == MapOne_Regions::MOUNTAIN_ONE) {
 
         std::cout << "First region";
     }
-    else if( g[Regions::MOUNTAIN_ONE].at(0) == Regions::MOUNTAIN_TWO) {
+    else if( g[MapOne_Regions::MOUNTAIN_ONE].at(0) == MapOne_Regions::MOUNTAIN_TWO) {
 
         std::cout << "Second region";
     }
