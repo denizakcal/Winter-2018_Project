@@ -1,4 +1,4 @@
-enum class Regions {
+enum class MapOne_Regions {
 
     MOUNTAIN_ONE,
     MOUNTAIN_TWO,
