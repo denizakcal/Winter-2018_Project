@@ -1,5 +1,5 @@
 
-enum class PowerBadge {
+enum class PowerBadges {
 
     COMMANDO,
     ALCHEMIST,
