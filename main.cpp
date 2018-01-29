@@ -22,14 +22,35 @@ class TheGame {
         }
     }
 
-    int dieroll(void) {
+    int die_roll(void) {
 
         int r;
         srand(time(NULL));
         r = rand()%6+1;
 
-        return r;
+        switch(r) {
+
+            case 1: {} // Two sides of the die have the number 0.
+            case 2: { // Two sides of the die have the number 0.
+                return 0;
+            }
+
+            case 3: {
+                return 1;
+            }
+
+            case 4: {} // Two sides of the die have the number 2.
+            case 5: { // Two sides of the die have the number 2.
+                return 2;
+            }
+
+            case 6: {
+                return 3;
+            }
+        }
     }
+};
+
 };
 
 int main()
