@@ -30,17 +30,17 @@ class TheGame {
 
         switch(r) {
 
-            case 1: {} // Two sides of the die have the number 0.
-            case 2: { // Two sides of the die have the number 0.
+            case 1: {} // Three sides of the die have the number 0.
+            case 2: {} // Three sides of the die have the number 0.
+            case 3: { // Three sides of the die have the number 0.
                 return 0;
             }
 
-            case 3: {
+            case 4: {
                 return 1;
             }
 
-            case 4: {} // Two sides of the die have the number 2.
-            case 5: { // Two sides of the die have the number 2.
+            case 5: {
                 return 2;
             }
 
