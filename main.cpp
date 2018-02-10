@@ -1,28 +1,30 @@
 #include <iostream>
-#include <Races.h>
+#include <RacesPlusOwnershipPair.h>
 #include <map>
-#include <MapOne_Regions.h>
+#include <RegionsOfMaps.h>
 #include <vector>
 #include <ctime>
 
 using namespace std;
 
-typedef map<MapOne_Regions,std::vector<MapOne_Regions>> GraphOfRegions;
-typedef map<MapOne_Regions,std::vector<Races>> LocationToRacesMap;
+typedef map<RegionsOfMaps,std::vector<RegionsOfMaps>> GraphOfRegions;
+typedef map<RegionsOfMaps,std::vector<RacesPlusOwnershipPair>> LocationToRacesPlusOwnershipPairMap;
 
 class TheGame {
 
-    std::vector<Races> containsRaces(MapOne_Regions region) {
 
-        if(region == MapOne_Regions::MOUNTAIN_ONE) {
+    //std::vector<Races> containsRaces(MapOne_Regions region, Players ownedByPlayer) {
+    std::vector<Races> racesPlusOwnershipPairContained(RegionsOfMaps region, RacesPlusOwnershipPair pair) {
 
-            LocationToRacesMap locationToRacesMap;
+        if(region == RegionsOfMaps::FIVE_PLAYER_MAP__REGION_ONE) {
 
-            return locationToRacesMap[region];
+            LocationToRacesPlusOwnershipPairMap locationToRacesPlusOwnershipPairMap;
+
+            return locationToRacesPlusOwnershipPairMap[region];
         }
     }
 
-    int die_roll(void) {
+    static int die_roll(void) {
 
         int r;
         srand(time(NULL));
@@ -51,27 +53,25 @@ class TheGame {
     }
 };
 
-};
-
 int main()
 {
 
     GraphOfRegions g;
-    MapOne_Regions regionsArray[2];
-    regionsArray[0] = MapOne_Regions::MOUNTAIN_TWO;
-    regionsArray[1] = MapOne_Regions::MOUNTAIN_THREE;
+    RegionsOfMaps regionsArray[2];
+    regionsArray[0] = RegionsOfMaps::MOUNTAIN_TWO;
+    regionsArray[1] = RegionsOfMaps::MOUNTAIN_THREE;
 
-    std::vector<MapOne_Regions> regionsVector;
-    regionsVector.push_back(MapOne_Regions::MOUNTAIN_TWO);
-    regionsVector.push_back(MapOne_Regions::MOUNTAIN_THREE);
+    std::vector<RegionsOfMaps> regionsVector;
+    regionsVector.push_back(RegionsOfMaps::MOUNTAIN_TWO);
+    regionsVector.push_back(RegionsOfMaps::MOUNTAIN_THREE);
 
-    g[MapOne_Regions::MOUNTAIN_ONE] = regionsVector;
+    g[RegionsOfMaps::MOUNTAIN_ONE] = regionsVector;
 
-    if( g[MapOne_Regions::MOUNTAIN_ONE].at(0) == MapOne_Regions::MOUNTAIN_ONE) {
+    if( g[RegionsOfMaps::MOUNTAIN_ONE].at(0) == RegionsOfMaps::MOUNTAIN_ONE) {
 
         std::cout << "First region";
     }
-    else if( g[MapOne_Regions::MOUNTAIN_ONE].at(0) == MapOne_Regions::MOUNTAIN_TWO) {
+    else if( g[RegionsOfMaps::MOUNTAIN_ONE].at(0) == RegionsOfMaps::MOUNTAIN_TWO) {
 
         std::cout << "Second region";
     }
