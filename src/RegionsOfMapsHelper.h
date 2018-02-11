@@ -1,6 +1,7 @@
 #ifndef REGIONSOFMAPSHELPER_H
 #define REGIONSOFMAPSHELPER_H
 
+#include "RegionsOfMaps.h"
 
 class RegionsOfMapsHelper
 {
