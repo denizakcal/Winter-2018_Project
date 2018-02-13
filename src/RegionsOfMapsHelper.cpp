@@ -425,9 +425,9 @@ bool isMountain(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FIVE_PLAYER_MAP__SEA_THREE: {
             return false;
         }
-    }
-    default: {
-        return false;
+        default: {
+            return false;
+        }
     }
 }
 
@@ -855,9 +855,9 @@ bool isHill(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FIVE_PLAYER_MAP__SEA_THREE: {
             return false;
         }
-    }
-    default: {
-        return false;
+        default: {
+            return false;
+        }
     }
 }
 
@@ -1285,9 +1285,9 @@ bool isSea(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FIVE_PLAYER_MAP__SEA_THREE: {
             return true;
         }
-    }
-    default: {
-        return false;
+        default: {
+            return false;
+        }
     }
 }
 
@@ -1715,9 +1715,9 @@ bool isSwamp(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FIVE_PLAYER_MAP__SEA_THREE: {
             return false;
         }
-    }
-    default: {
-        return false;
+        default: {
+            return false;
+        }
     }
 }
 
