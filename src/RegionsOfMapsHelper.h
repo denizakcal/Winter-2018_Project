@@ -3,15 +3,11 @@
 
 #include "RegionsOfMaps.h"
 
-class RegionsOfMapsHelper
-{
-    public:
-        RegionsOfMapsHelper();
-        static bool isMountain(RegionsOfMaps regionsOfMaps);
-
-    protected:
-
-    private:
-};
+bool isMountain(RegionsOfMaps regionsOfMaps);
+bool isHill(RegionsOfMaps regionsOfMaps);
+bool isSea(RegionsOfMaps regionsOfMaps);
+bool isSwamp(RegionsOfMaps regionsOfMaps);
+bool isForest(RegionsOfMaps regionsOfMaps);
+bool isSameMap(RegionsOfMaps regionsOfMaps);
 
 #endif // REGIONSOFMAPSHELPER_H
