@@ -22,7 +22,7 @@ class TheGame {
 		return players.size();
 	}
 
-	void run(int x) {
+	public: void run() {
 
 		while( totalTurnsSoFar < maximumAmountOfTurnsInTotal ) {
 
