@@ -1,12 +1,7 @@
 #include "RegionsOfMapsHelper.h"
 #include "RegionsOfMaps.h"
 
-RegionsOfMapsHelper::RegionsOfMapsHelper()
-{
-    //ctor
-}
-
-static bool isMountain(RegionsOfMaps regionsOfMaps) {
+bool isMountain(RegionsOfMaps regionsOfMaps) {
 
     switch(regionsOfMaps) {
 
@@ -430,10 +425,13 @@ static bool isMountain(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FIVE_PLAYER_MAP__SEA_THREE: {
             return false;
         }
+        default: {
+            return false;
+        }
     }
 }
 
-static bool isHill(RegionsOfMaps regionsOfMaps) {
+bool isHill(RegionsOfMaps regionsOfMaps) {
 
     switch(regionsOfMaps) {
 
@@ -857,10 +855,13 @@ static bool isHill(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FIVE_PLAYER_MAP__SEA_THREE: {
             return false;
         }
+        default: {
+            return false;
+        }
     }
 }
 
-static bool isSea(RegionsOfMaps regionsOfMaps) {
+bool isSea(RegionsOfMaps regionsOfMaps) {
 
     switch(regionsOfMaps) {
 
@@ -1284,10 +1285,13 @@ static bool isSea(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FIVE_PLAYER_MAP__SEA_THREE: {
             return true;
         }
+        default: {
+            return false;
+        }
     }
 }
 
-static bool isSwamp(RegionsOfMaps regionsOfMaps) {
+bool isSwamp(RegionsOfMaps regionsOfMaps) {
 
     switch(regionsOfMaps) {
 
@@ -1711,10 +1715,13 @@ static bool isSwamp(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FIVE_PLAYER_MAP__SEA_THREE: {
             return false;
         }
+        default: {
+            return false;
+        }
     }
 }
 
-static bool isForest(RegionsOfMaps regionsOfMaps) {
+bool isForest(RegionsOfMaps regionsOfMaps) {
 
     switch(regionsOfMaps) {
 
@@ -2138,5 +2145,12 @@ static bool isForest(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FIVE_PLAYER_MAP__SEA_THREE: {
             return false;
         }
+        default: {
+            return false;
+        }
     }
+}
+
+bool isSameMap(RegionsOfMaps regionsOfMaps) {
+	return true; // temporary code
 }
