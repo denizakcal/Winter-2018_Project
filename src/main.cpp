@@ -215,7 +215,7 @@ class TwoPlayerMap {
 
 		//print connected graph
 		std::vector<int> component(boost::num_vertices(g));
-		size_t num_components = boost::connected_components(g, &component[0]);
+		/*size_t num_components = boost::connected_components(g, &component[0]);*/
 
 		std::cout << "Vertices in the first component:" << std::endl;
 		for (size_t i = 0; i < boost::num_vertices(g); ++i)
