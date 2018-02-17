@@ -13,7 +13,7 @@ UserInterface::~UserInterface() {
 	// TODO Auto-generated destructor stub
 }
 
-void UserInterface::loadMap() {
+GameMap UserInterface::loadMap() {
 
 	/*std::string line_;
 	ifstream file_("mytext.txt");
