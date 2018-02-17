@@ -21,4 +21,4 @@ enum class PowerBadges {
     SWAMP,
     UNDERWORLD,
     WEALTHY
-}
+};
