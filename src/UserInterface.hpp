@@ -9,6 +9,7 @@ public:
 	UserInterface();
 	virtual ~UserInterface();
 	GameMap loadMap();
+	void saveMap(GameMap gameMap);
 };
 
 #endif /* USERINTERFACE_H_ */

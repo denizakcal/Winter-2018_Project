@@ -1,6 +1,7 @@
 
 #include "UserInterface.hpp"
 #include <fstream>
+#include "GameMap.hpp"
 
 using namespace std;
 
@@ -28,4 +29,9 @@ GameMap UserInterface::loadMap() {
 		std::cout << "file is not open" << '\n';
 	std::cin.get();
 	return 0;*/
+}
+
+void UserInterface::saveMap(GameMap gameMap) {
+
+
 }
