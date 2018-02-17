@@ -20,5 +20,6 @@ enum class PowerBadges {
     STOUT,
     SWAMP,
     UNDERWORLD,
-    WEALTHY
+    WEALTHY,
+	NO_POWER_BADGE
 };
