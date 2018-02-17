@@ -14,9 +14,9 @@ using namespace std;
 
 int main(void) {
 
-	GameMap m;
+	GameMap *m = new GameMap(3);
 
-	m.buildMap();
+	m->buildMap();
 
 	std::cout << "Testing 123" << std::endl;
 	/*system("pause");*/

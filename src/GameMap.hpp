@@ -3,24 +3,20 @@
 #define GAMEMAP_HPP_
 
 #include <iostream>
-
 #include "RegionsOfMaps.hpp"
 
-struct VertexData {
 
-	RegionsOfMaps region_name; //?
-};
-
-struct EdgeData {
-
-	std::string edge_name;
-	double dist; //not sure if we need this yet
-};
 
 class GameMap {
+
+private:
+	int numberOfPlayers;
 public:
-	GameMap();
+	GameMap(int numberOfPlayers_) {
+		numberOfPlayers = numberOfPlayers_;
+	}
 	virtual ~GameMap();
+	int getNumberOfPlayers() {return numberOfPlayers;}
 	void buildMap();
 };
 
