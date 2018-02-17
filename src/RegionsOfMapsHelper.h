@@ -1,7 +1,7 @@
 #ifndef REGIONSOFMAPSHELPER_H
 #define REGIONSOFMAPSHELPER_H
 
-#include "RegionsOfMaps.h"
+#include "RegionsOfMaps.hpp"
 
 bool isMountain(RegionsOfMaps regionsOfMaps);
 bool isHill(RegionsOfMaps regionsOfMaps);

@@ -7,7 +7,7 @@
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/connected_components.hpp>
 
-#include "RegionsOfMaps.h"
+#include "RegionsOfMaps.hpp"
 
 using namespace boost;
 using namespace std;

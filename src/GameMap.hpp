@@ -3,7 +3,8 @@
 #define GAMEMAP_HPP_
 
 #include <iostream>
-#include "RegionsOfMaps.h"
+
+#include "RegionsOfMaps.hpp"
 
 struct VertexData {
 

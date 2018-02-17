@@ -6,7 +6,7 @@
 #include <boost/graph/connected_components.hpp>
 
 #include "GameMap.hpp"
-#include "RegionsOfMaps.h"
+#include "RegionsOfMaps.hpp"
 
 
 using namespace boost;

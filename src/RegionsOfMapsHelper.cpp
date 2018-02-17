@@ -1,5 +1,6 @@
 #include "RegionsOfMapsHelper.h"
-#include "RegionsOfMaps.h"
+
+#include "RegionsOfMaps.hpp"
 
 bool isMountain(RegionsOfMaps regionsOfMaps) {
 
