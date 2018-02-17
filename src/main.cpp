@@ -8,11 +8,16 @@
 #include "GameMap.hpp"
 #include "RegionsOfMaps.hpp"
 
+#include "UserInterface.hpp"
 
 using namespace boost;
 using namespace std;
 
 int main(void) {
+
+	/*UserInterface ui;
+	std::string fileName("GameMap_Save.txt");
+	ui.loadMap(fileName);*/
 
 	GameMap *m = new GameMap(3);
 

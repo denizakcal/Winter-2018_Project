@@ -8,7 +8,7 @@ class UserInterface {
 public:
 	UserInterface();
 	virtual ~UserInterface();
-	GameMap loadMap();
+	GameMap loadMap(std::string fileName);
 	void saveMap(GameMap gameMap);
 };
 

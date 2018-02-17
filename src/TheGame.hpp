@@ -13,6 +13,7 @@ class TheGame {
 
 		void run();
 		int getAmountOfPlayers();
+		int roll(void);
 
 	private:
 		bool nextTurn();

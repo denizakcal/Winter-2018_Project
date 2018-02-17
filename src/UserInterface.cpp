@@ -2,19 +2,43 @@
 #include "UserInterface.hpp"
 #include <fstream>
 #include "GameMap.hpp"
+#include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
 UserInterface::UserInterface() {
 	// TODO Auto-generated constructor stub
-
 }
 
 UserInterface::~UserInterface() {
 	// TODO Auto-generated destructor stub
 }
 
-GameMap UserInterface::loadMap() {
+GameMap UserInterface::loadMap(std::string fileName) {
+
+	ifstream fileScanner;
+	std::getline(std::cin, fileName);
+	fileScanner.open(fileName);
+
+	if( !fileScanner.is_open() ) {
+
+		std::cout << "Bad!" << std::endl;
+//		exit(EXIT_FAILURE);
+	}
+
+	char word[50];
+	fileScanner >> word;
+
+	while( fileScanner.good() ) { // good = hasNext
+
+		cout << word << " ";
+		fileScanner >> word;
+	}
+
+	GameMap gameMap(2);
+
+	return gameMap;
 
 	/*std::string line_;
 	ifstream file_("mytext.txt");
