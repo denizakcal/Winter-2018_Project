@@ -9,11 +9,18 @@ class TheGame {
 
 	TheGame(std::list<Player> players);
 
-	int getAmountOfPlayers();
+	public:
 
-	public: void run();
+		void run();
+		int getAmountOfPlayers();
 
-	private: bool nextTurn();
+	private:
+		bool nextTurn();
+		const int MAXIMUM_AMOUNT_OF_TURNS_PER_PLAYER = 10;
+		int maximumAmountOfTurnsInTotal;
+		std::list<Player> players;
+		int totalTurnsSoFar;
+		int turnOfPlayerN = 1;
 };
 
 #endif /* THEGAME_HPP_ */
