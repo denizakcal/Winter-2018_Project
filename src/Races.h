@@ -12,5 +12,6 @@ enum class Races {
 	SORCERERS,
 	TRITONS,
 	TROLLS,
-	WIZARDS
+	WIZARDS,
+	NO_RACE
 }; // I didn't put a blank race, at least not yet.
