@@ -42,7 +42,7 @@ GameMap UserInterface::loadMap(std::string fileName) {
 
 	while( getline(theFile, currentParsedValue, ',') ) {
 
-		std::cout << currentParsedValue << " Counter: " << std::endl;
+		std::cout << currentParsedValue << std::endl;
 	}
 
 	GameMap gameMap(2);
