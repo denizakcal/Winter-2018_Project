@@ -17,7 +17,7 @@ UserInterface::~UserInterface() {
 
 GameMap UserInterface::loadMap(std::string fileName) {
 
-	ifstream fileScanner;
+	/*ifstream fileScanner;
 	std::getline(std::cin, fileName);
 	fileScanner.open(fileName);
 
@@ -34,6 +34,17 @@ GameMap UserInterface::loadMap(std::string fileName) {
 
 		cout << word << " ";
 		fileScanner >> word;
+	}*/
+
+	ifstream theFile("some_file.txt");
+
+	int someInteger;
+	std::string someString;
+	double someDouble;
+
+	while(theFile >> someInteger >> someString >> someDouble) {
+
+		std::cout << someInteger << someString << someDouble << std::endl;
 	}
 
 	GameMap gameMap(2);

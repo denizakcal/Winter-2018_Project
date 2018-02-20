@@ -15,9 +15,9 @@ using namespace std;
 
 int main(void) {
 
-	/*UserInterface ui;
-	std::string fileName("GameMap_Save.txt");
-	ui.loadMap(fileName);*/
+	UserInterface ui;
+	std::string fileName("some_file.txt");
+	ui.loadMap(fileName);
 
 	GameMap *m = new GameMap(3);
 
