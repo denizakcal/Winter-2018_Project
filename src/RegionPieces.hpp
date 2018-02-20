@@ -1,5 +1,5 @@
-enum class RegionPieces {
-
+enum class RegionPieces
+{
     TROLL_LAIR,
     FORTRESS,
     MOUNTAIN,
@@ -8,4 +8,4 @@ enum class RegionPieces {
     HERO,
     DRAGON,
 	NO_REGION_PIECE
-}
+};
