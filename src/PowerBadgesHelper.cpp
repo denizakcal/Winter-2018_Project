@@ -1,6 +1,105 @@
 
 #include "PowerBadgesHelper.hpp"
 
+#include <string>
+
+using namespace std;
+
+std::string powerBadgesEnumToString(PowerBadges powerBadgeEnum) {
+
+	switch(powerBadgeEnum) {
+
+		case PowerBadges::COMMANDO: {
+
+			return "COMMANDO";
+		}
+		case PowerBadges::ALCHEMIST: {
+
+			return "ALCHEMIST";
+		}
+		case PowerBadges::FORTIFIED: {
+
+			return "FORTIFIED";
+		}
+		case PowerBadges::MERCHANT: {
+
+			return "MERCHANT";
+		}
+		case PowerBadges::SPIRIT: {
+
+			return "SPIRIT";
+		}
+		case PowerBadges::HILL: {
+
+			return "HILL";
+		}
+		case PowerBadges::BIVOUACKING: {
+
+			return "BIVOUACKING";
+		}
+		case PowerBadges::BERSERK: {
+
+			return "BERSERK";
+		}
+		case PowerBadges::DIPLOMAT: {
+
+			return "DIPLOMAT";
+		}
+		case PowerBadges::DRAGON_MASTER: {
+
+			return "DRAGON_MASTER";
+		}
+		case PowerBadges::MOUNTED: {
+
+			return "MOUNTED";
+		}
+		case PowerBadges::PILLAGING: {
+
+			return "PILLAGING";
+		}
+		case PowerBadges::FLYING: {
+
+			return "FLYING";
+		}
+		case PowerBadges::SEAFARING: {
+
+			return "SEAFARING";
+		}
+		case PowerBadges::FOREST: {
+
+			return "FOREST";
+		}
+		case PowerBadges::HEROIC: {
+
+			return "HEROIC";
+		}
+		case PowerBadges::STOUT: {
+
+			return "STOUT";
+		}
+		case PowerBadges::SWAMP: {
+
+			return "SWAMP";
+		}
+		case PowerBadges::UNDERWORLD: {
+
+			return "UNDERWORLD";
+		}
+		case PowerBadges::WEALTHY: {
+
+			return "WEALTHY";
+		}
+		case PowerBadges::NO_POWER_BADGE: {
+
+			return "NO_POWER_BADGE";
+		}
+		default: {
+
+			return "SomethingWentWrong";
+		}
+	}
+}
+
 PowerBadges powerBadgesStringToEnum(std::string powerBadgesString) {
 
 	if(powerBadgesString == "COMMANDO" || powerBadgesString == "PowerBadges::COMMANDO") {
@@ -63,7 +162,6 @@ PowerBadges powerBadgesStringToEnum(std::string powerBadgesString) {
 	else if(powerBadgesString == "WEALTHY" || powerBadgesString == "PowerBadges::WEALTHY") {
 		return PowerBadges::WEALTHY;
 	}
-	else if(powerBadgesString == "NO_POWER_BADGE" || powerBadgesString == "PowerBadges::NO_POWER_BADGE") {
-		return PowerBadges::NO_POWER_BADGE;
-	}
+
+	return PowerBadges::NO_POWER_BADGE;
 }

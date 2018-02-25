@@ -8,7 +8,7 @@
 
 #include "Races.hpp"
 
-std::string enumToString(Races racesEnum);
+std::string racesEnumToString(Races racesEnum);
 
 Races racesStringToEnum(std::string racesString);
 

@@ -12,7 +12,7 @@ bool isSea(RegionsOfMaps regionsOfMaps);
 bool isSwamp(RegionsOfMaps regionsOfMaps);
 bool isForest(RegionsOfMaps regionsOfMaps);
 bool isSameMap(RegionsOfMaps regionsOfMaps);
-std::string enumToString(RegionsOfMaps regionsOfMaps);
-RegionsOfMaps regionsStringToEnum(std::string regionString);
+std::string regionsOfMapsEnumToString(RegionsOfMaps regionsOfMaps);
+RegionsOfMaps regionsOfMapsStringToEnum(std::string regionString);
 
 #endif // REGIONSOFMAPSHELPER_H
