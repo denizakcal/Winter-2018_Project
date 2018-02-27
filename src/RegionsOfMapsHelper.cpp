@@ -190,7 +190,7 @@ bool isMountain(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_SEVEN: {
             return false;
         }
-        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUTAIN_EIGHT: {
+        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_EIGHT: {
             return false;
         }
         case RegionsOfMaps::FOUR_PLAYER_MAP__FARMLAND_ONE: {
@@ -620,7 +620,7 @@ bool isHill(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_SEVEN: {
             return false;
         }
-        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUTAIN_EIGHT: {
+        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_EIGHT: {
             return false;
         }
         case RegionsOfMaps::FOUR_PLAYER_MAP__FARMLAND_ONE: {
@@ -1050,7 +1050,7 @@ bool isSea(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_SEVEN: {
             return false;
         }
-        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUTAIN_EIGHT: {
+        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_EIGHT: {
             return false;
         }
         case RegionsOfMaps::FOUR_PLAYER_MAP__FARMLAND_ONE: {
@@ -1480,7 +1480,7 @@ bool isSwamp(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_SEVEN: {
             return false;
         }
-        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUTAIN_EIGHT: {
+        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_EIGHT: {
             return false;
         }
         case RegionsOfMaps::FOUR_PLAYER_MAP__FARMLAND_ONE: {
@@ -1910,7 +1910,7 @@ bool isForest(RegionsOfMaps regionsOfMaps) {
         case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_SEVEN: {
             return false;
         }
-        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUTAIN_EIGHT: {
+        case RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_EIGHT: {
             return false;
         }
         case RegionsOfMaps::FOUR_PLAYER_MAP__FARMLAND_ONE: {
@@ -2592,24 +2592,24 @@ std::string regionsOfMapsEnumToString(RegionsOfMaps regionsOfMaps) {
 
 RegionsOfMaps regionsOfMapsStringToEnum(std::string regionString) {
 
-    if(regionString == "TWO_PLAYER_MAP__MOUNTAIN_ONE" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_ONE") {
+	if(regionString == "TWO_PLAYER_MAP__MOUNTAIN_ONE" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_ONE") {
 		return RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_ONE;
 	}
-    else if( regionString == "TWO_PLAYER_MAP__MOUNTAIN_TWO" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_TWO") {
+	else if( regionString == "TWO_PLAYER_MAP__MOUNTAIN_TWO" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_TWO") {
 		return RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_TWO;
 	}
-    else if(regionString == "TWO_PLAYER_MAP__MOUNTAIN_THREE" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_THREE" ) {
+	else if(regionString == "TWO_PLAYER_MAP__MOUNTAIN_THREE" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_THREE" ) {
 		return RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_THREE;
 	}
-    else if(regionString == "TWO_PLAYER_MAP__MOUNTAIN_FOUR" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_FOUR") {
-    	return RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_FOUR;
-    }
-    else if(regionString == "TWO_PLAYER_MAP__FARMLAND_ONE" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_ONE") {
-    	return RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_ONE;
-    }
-    else if(regionString == "TWO_PLAYER_MAP__FARMLAND_TWO" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_TWO") {
-    	return RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_TWO;
-    }
+	else if(regionString == "TWO_PLAYER_MAP__MOUNTAIN_FOUR" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_FOUR") {
+		return RegionsOfMaps::TWO_PLAYER_MAP__MOUNTAIN_FOUR;
+	}
+	else if(regionString == "TWO_PLAYER_MAP__FARMLAND_ONE" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_ONE") {
+		return RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_ONE;
+	}
+	else if(regionString == "TWO_PLAYER_MAP__FARMLAND_TWO" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_TWO") {
+		return RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_TWO;
+	}
 	else if(regionString == "TWO_PLAYER_MAP__FARMLAND_THREE" || regionString == "RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_THREE") {
 		return RegionsOfMaps::TWO_PLAYER_MAP__FARMLAND_THREE;
 	}
@@ -2773,7 +2773,7 @@ RegionsOfMaps regionsOfMapsStringToEnum(std::string regionString) {
 		return RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_SEVEN;
 	}
 	else if(regionString == "FOUR_PLAYER_MAP__MOUTAIN_EIGHT" || regionString == "RegionsOfMaps::FOUR_PLAYER_MAP__MOUTAIN_EIGHT") {
-		return RegionsOfMaps::FOUR_PLAYER_MAP__MOUTAIN_EIGHT;
+		return RegionsOfMaps::FOUR_PLAYER_MAP__MOUNTAIN_EIGHT;
 	}
 	else if(regionString == "FOUR_PLAYER_MAP__FARMLAND_ONE" || regionString == "RegionsOfMaps::FOUR_PLAYER_MAP__FARMLAND_ONE") {
 		return RegionsOfMaps::FOUR_PLAYER_MAP__FARMLAND_ONE;
@@ -3092,6 +3092,5 @@ RegionsOfMaps regionsOfMapsStringToEnum(std::string regionString) {
 	}
 	*/
 
-		return RegionsOfMaps::NO_REGION;
-	}
+	return RegionsOfMaps::NO_REGION;
 }
