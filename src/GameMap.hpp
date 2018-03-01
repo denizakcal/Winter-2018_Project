@@ -31,7 +31,7 @@ private:
 		VertexData, EdgeData
 		>GraphType;
 
-	//instanciate graph type
+	//instantiate graph type
 	GraphType g;
 public:
 	GameMap(int numberOfPlayers_) {
