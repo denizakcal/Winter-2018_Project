@@ -19,11 +19,11 @@ Graph::~Graph() {
 }
 
 //method for to add vertices to empty graph or subgraph
-void Graph::addRegion(GraphType G0, RegionsOfMaps region) {
+void Graph::addRegion(BoostGraph G0, RegionsOfMaps region) {
 
 	//typedef labels
-	typedef boost::graph_traits<GraphType>::vertex_descriptor vertex;
-	typedef boost::graph_traits<GraphType>::edge_descriptor edge;
+	typedef boost::graph_traits<BoostGraph>::vertex_descriptor vertex;
+	typedef boost::graph_traits<BoostGraph>::edge_descriptor edge;
 
 
 	vertex v = boost::add_vertex(G0);
@@ -39,8 +39,8 @@ void Graph::addRegion(GraphType G0, RegionsOfMaps region) {
 void Graph::buildMap() {
 
 	    //typedef labels
-	    typedef boost::graph_traits<GraphType>::vertex_descriptor vertex;
-	    typedef boost::graph_traits<GraphType>::edge_descriptor edge;
+	    typedef boost::graph_traits<BoostGraph>::vertex_descriptor vertex;
+	    typedef boost::graph_traits<BoostGraph>::edge_descriptor edge;
 
 		int chooseGraph = getNumberOfPlayers();
 

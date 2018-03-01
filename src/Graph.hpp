@@ -29,10 +29,10 @@ private:
 		boost::vecS,
 		boost::undirectedS,
 		VertexData, EdgeData
-		>GraphType;
+		>BoostGraph;
 
 	//instantiate graph type
-	GraphType g;
+	BoostGraph g;
 public:
 	Graph(int numberOfPlayers_) {
 		numberOfPlayers = numberOfPlayers_;
@@ -40,7 +40,7 @@ public:
 	virtual ~Graph();
 	int getNumberOfPlayers() {return numberOfPlayers;}
 	void buildMap();
-	void addRegion(GraphType g, RegionsOfMaps region);
+	void addRegion(BoostGraph g, RegionsOfMaps region);
 
 };
 
