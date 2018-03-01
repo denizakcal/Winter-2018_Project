@@ -1,7 +1,6 @@
 
 #include "UserInterface.hpp"
 #include <fstream>
-#include "GameMap.hpp"
 #include <cstdlib>
 #include "RegionsOfMaps.hpp"
 #include "RegionsOfMapsHelper.hpp"
@@ -9,6 +8,7 @@
 #include "RegionPiecesHelper.hpp"
 #include "RacesHelper.hpp"
 #include <vector>
+#include "Graph.hpp"
 
 using namespace std;
 
@@ -20,7 +20,7 @@ UserInterface::~UserInterface() {
 	// TODO Auto-generated destructor stub
 }
 
-GameMap UserInterface::loadMap(std::string fileName) {
+Graph UserInterface::loadMap(std::string fileName) {
 
 	/*ifstream fileScanner;
 	std::getline(std::cin, fileName);
@@ -180,7 +180,7 @@ GameMap UserInterface::loadMap(std::string fileName) {
 	std::cout << regionPiecesEnumToString( allDataOfOnePerson.regionPieces.at(0) ) << std::endl;
 	std::cout << regionsOfMapsEnumToString( allDataOfOnePerson.regions.at(0) ) << std::endl; // DEBUG THIS
 
-	GameMap gameMap(2);
+	Graph gameMap(2);
 
 	return gameMap;
 
@@ -199,7 +199,7 @@ GameMap UserInterface::loadMap(std::string fileName) {
 	return 0;*/
 }
 
-void UserInterface::saveMap(GameMap gameMap) {
+void UserInterface::saveMap(Graph gameMap) {
 
 
 }

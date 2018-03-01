@@ -1,6 +1,6 @@
 
-#ifndef GAMEMAP_HPP_
-#define GAMEMAP_HPP_
+#ifndef GRAPH_HPP_
+#define GRAPH_HPP_
 
 #include <iostream>
 #include "RegionsOfMaps.hpp"
@@ -19,7 +19,7 @@ struct EdgeData
 	double dist; //not sure if we need this yet
 };
 
-class GameMap {
+class Graph {
 
 private:
 	int numberOfPlayers;
@@ -34,14 +34,14 @@ private:
 	//instantiate graph type
 	GraphType g;
 public:
-	GameMap(int numberOfPlayers_) {
+	Graph(int numberOfPlayers_) {
 		numberOfPlayers = numberOfPlayers_;
 	}
-	virtual ~GameMap();
+	virtual ~Graph();
 	int getNumberOfPlayers() {return numberOfPlayers;}
 	void buildMap();
 	void addRegion(GraphType g, RegionsOfMaps region);
 
 };
 
-#endif /* GAMEMAP_HPP_ */
+#endif /* GRAPH_HPP_ */

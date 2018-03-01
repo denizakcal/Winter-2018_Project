@@ -5,7 +5,7 @@
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/connected_components.hpp>
 
-#include "GameMap.hpp"
+#include "Graph.hpp"
 #include "RegionsOfMaps.hpp"
 
 #include "UserInterface.hpp"
@@ -19,7 +19,7 @@ int main(void) {
 	std::string fileName("some_file.txt");
 	ui.loadMap(fileName);
 
-	GameMap *m = new GameMap(3);
+	Graph *m = new Graph(3);
 
 	m->buildMap();
 

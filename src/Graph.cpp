@@ -1,4 +1,4 @@
-#include "GameMap.hpp"
+#include "Graph.hpp"
 
 #include <iostream>                  // for std::cout
 #include <utility>                   // for std::pair
@@ -13,13 +13,13 @@
 using namespace boost;
 using namespace std;
 
-GameMap::~GameMap() {
+Graph::~Graph() {
 
 	// code
 }
 
 //method for to add vertices to empty graph or subgraph
-void GameMap::addRegion(GraphType G0, RegionsOfMaps region) {
+void Graph::addRegion(GraphType G0, RegionsOfMaps region) {
 
 	//typedef labels
 	typedef boost::graph_traits<GraphType>::vertex_descriptor vertex;
@@ -36,7 +36,7 @@ void GameMap::addRegion(GraphType G0, RegionsOfMaps region) {
 }
 
 
-void GameMap::buildMap() {
+void Graph::buildMap() {
 
 	    //typedef labels
 	    typedef boost::graph_traits<GraphType>::vertex_descriptor vertex;
