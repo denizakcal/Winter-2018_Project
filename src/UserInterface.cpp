@@ -170,7 +170,7 @@ Graph UserInterface::loadMap(std::string fileName) {
 		nthTokenSet++;
 	}
 
-	// The following eight lines are just for testing purposes (and will be removed later).
+	/*// The following eight lines are just for testing purposes (and will be removed later).
 	std::cout << allDataOfOnePerson.numberOfRegionsOccupied << std::endl;
 	std::cout << allDataOfOnePerson.numberOfTokens << std::endl;
 	std::cout << allDataOfOnePerson.playerName << std::endl;
@@ -178,11 +178,11 @@ Graph UserInterface::loadMap(std::string fileName) {
 	std::cout << racesEnumToString(allDataOfOnePerson.races.at(0)) << std::endl;
 	std::cout << allDataOfOnePerson.racesMultiplicity.at(0) << std::endl;
 	std::cout << regionPiecesEnumToString( allDataOfOnePerson.regionPieces.at(0) ) << std::endl;
-	std::cout << regionsOfMapsEnumToString( allDataOfOnePerson.regions.at(0) ) << std::endl; // DEBUG THIS
+	std::cout << regionsOfMapsEnumToString( allDataOfOnePerson.regions.at(0) ) << std::endl;*/
 
-	Graph gameMap(2);
+	Graph gameGraph(2);
 
-	return gameMap;
+	return gameGraph;
 
 	/*std::string line_;
 	ifstream file_("mytext.txt");
