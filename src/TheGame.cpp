@@ -1,4 +1,4 @@
-#include <list>
+#include <vector>
 #include "Player.h"
 #include "TheGame.hpp"
 #include <ctime>
@@ -6,11 +6,11 @@
 
 const int MAXIMUM_AMOUNT_OF_TURNS_PER_PLAYER = 10;
 int maximumAmountOfTurnsInTotal;
-std::list<Player> players;
+std::vector<Player> players;
 int totalTurnsSoFar;
 int turnOfPlayerN = 1;
 
-TheGame::TheGame(std::list<Player> players) {
+TheGame::TheGame(std::vector<Player> players) {
 
 	// Stuff specific to any object/instance of this class
 	this->players = players;

@@ -7,7 +7,7 @@
 
 class TheGame {
 
-	TheGame(std::list<Player> players);
+	TheGame(std::vector<Player> players);
 
 	public:
 
@@ -19,7 +19,7 @@ class TheGame {
 		bool nextTurn();
 		const int MAXIMUM_AMOUNT_OF_TURNS_PER_PLAYER = 10;
 		int maximumAmountOfTurnsInTotal;
-		std::list<Player> players;
+		std::vector<Player> players;
 		int totalTurnsSoFar;
 		int turnOfPlayerN = 1;
 };
