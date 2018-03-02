@@ -164,20 +164,6 @@ Graph UserInterface::loadMap(std::string fileName) {
 	Graph gameGraph(2);
 
 	return gameGraph;
-
-	/*std::string line_;
-	ifstream file_("mytext.txt");
-	if (file_.is_open()) {
-		while (getline(file_, line_)) {
-			std::out << line '\n';
-
-		}
-		file_.close();
-	}
-	else
-		std::cout << "file is not open" << '\n';
-	std::cin.get();
-	return 0;*/
 }
 
 void UserInterface::saveMap(Graph gameMap) {
