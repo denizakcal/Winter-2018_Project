@@ -13,11 +13,6 @@
 using namespace boost;
 using namespace std;
 
-Graph::~Graph() {
-
-	// code
-}
-
 //method for to add vertices to empty graph or subgraph
 void Graph::addRegion(BoostGraph G0, RegionsOfMaps region) {
 
@@ -34,7 +29,6 @@ void Graph::addRegion(BoostGraph G0, RegionsOfMaps region) {
 	//boost::tie(e, added) = boost::add_edge()
 
 }
-
 
 void Graph::buildMap() {
 
@@ -1012,4 +1006,9 @@ void Graph::buildMap() {
 		}
 
 
+}
+
+Graph::~Graph() {
+
+	// code
 }

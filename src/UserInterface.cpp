@@ -9,6 +9,7 @@
 #include "RacesHelper.hpp"
 #include <vector>
 #include "Graph.hpp"
+#include "Player.hpp"
 
 using namespace std;
 
@@ -160,6 +161,8 @@ Graph UserInterface::loadMap(std::string fileName) {
 	std::cout << allDataOfOnePerson.racesMultiplicity.at(0) << std::endl;
 	std::cout << regionPiecesEnumToString( allDataOfOnePerson.regionPieces.at(0) ) << std::endl;
 	std::cout << regionsOfMapsEnumToString( allDataOfOnePerson.regions.at(0) ) << std::endl;*/
+
+	Player playerOne();
 
 	Graph gameGraph(2);
 
