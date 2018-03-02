@@ -22,25 +22,6 @@ UserInterface::~UserInterface() {
 
 Graph UserInterface::loadMap(std::string fileName) {
 
-	/*ifstream fileScanner;
-	std::getline(std::cin, fileName);
-	fileScanner.open(fileName);
-
-	if( !fileScanner.is_open() ) {
-
-		std::cout << "Bad!" << std::endl;
-//		exit(EXIT_FAILURE);
-	}
-
-	char word[50];
-	fileScanner >> word;
-
-	while( fileScanner.good() ) { // good = hasNext
-
-		std::cout << word << " ";
-		fileScanner >> word;
-	}*/
-
 	struct AllDataOfOnePerson {
 
 		std::string playerName;
