@@ -7,10 +7,8 @@
 
 class TheGame {
 
-	TheGame(std::vector<Player> players);
-
 	public:
-
+		TheGame(std::vector<Player> players);
 		void run();
 		int getAmountOfPlayers();
 		int roll(void);

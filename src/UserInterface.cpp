@@ -8,7 +8,7 @@
 #include "RegionPiecesHelper.hpp"
 #include "RacesHelper.hpp"
 #include <vector>
-#include "Graph.hpp"
+#include "TheGame.hpp"
 #include "Player.hpp"
 
 using namespace std;
@@ -21,7 +21,7 @@ UserInterface::~UserInterface() {
 	// TODO Auto-generated destructor stub
 }
 
-Graph UserInterface::loadMap(std::string fileName) {
+TheGame UserInterface::loadGame(std::string fileName) {
 
 	struct AllDataOfOnePerson {
 
@@ -162,11 +162,19 @@ Graph UserInterface::loadMap(std::string fileName) {
 	std::cout << regionPiecesEnumToString( allDataOfOnePerson.regionPieces.at(0) ) << std::endl;
 	std::cout << regionsOfMapsEnumToString( allDataOfOnePerson.regions.at(0) ) << std::endl;*/
 
-	Player playerOne();
+	Player playerOne;
+	Player playerTwo;
 
 	Graph gameGraph(2);
 
-	return gameGraph;
+	std::vector<Player> playersVector;
+
+	playersVector.push_back(playerOne);
+	playersVector.push_back(playerTwo);
+
+	TheGame theGame(playersVector);
+
+	return theGame;
 }
 
 void UserInterface::saveGame(TheGame theGame) {

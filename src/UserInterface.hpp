@@ -9,7 +9,7 @@ class UserInterface {
 public:
 	UserInterface();
 	virtual ~UserInterface();
-	Graph loadMap(std::string fileName);
+	TheGame loadGame(std::string fileName);
 	void saveGame(TheGame theGame);
 };
 

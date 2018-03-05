@@ -20,7 +20,7 @@ int main(void) {
 
 	UserInterface ui;
 	std::string fileName("some_file.txt");
-	ui.loadMap(fileName);
+	ui.loadGame(fileName);
 
 	Graph *m = new Graph(3);
 
