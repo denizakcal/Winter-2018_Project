@@ -34,9 +34,7 @@ private:
 	//instantiate graph type
 	BoostGraph g;
 public:
-	Graph(int numberOfPlayers_) {
-		numberOfPlayers = numberOfPlayers_;
-	}
+	Graph(int numberOfPlayers_);
 	virtual ~Graph();
 	int getNumberOfPlayers() {return numberOfPlayers;}
 	void buildMap();

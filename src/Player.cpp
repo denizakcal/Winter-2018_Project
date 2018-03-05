@@ -1,11 +1,5 @@
-/*
- * Player.cpp
- *
- *  Created on: Feb 13, 2018
- *      Author: deniz
- */
 
-#include "Player.h"
+#include "Player.hpp"
 
 Player::Player() {
 	// TODO Auto-generated constructor stub

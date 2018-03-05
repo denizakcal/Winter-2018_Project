@@ -3,7 +3,7 @@
 #define THEGAME_HPP_
 
 #include "list"
-#include "Player.h"
+#include "Player.hpp"
 
 class TheGame {
 

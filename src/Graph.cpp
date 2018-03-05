@@ -13,6 +13,12 @@
 using namespace boost;
 using namespace std;
 
+Graph::Graph(int numberOfPlayers_) {
+	numberOfPlayers = numberOfPlayers_;
+
+	std::cout << "yo" << std::endl;
+}
+
 //method for to add vertices to empty graph or subgraph
 void Graph::addRegion(BoostGraph G0, RegionsOfMaps region) {
 
@@ -1005,7 +1011,12 @@ void Graph::buildMap() {
 
 		}
 
+		std::cout << "batman" << typeid(g).name() << "spiderman" << std::endl;
 
+		boost::adjacency_list<boost::vecS, boost::vecS, boost::undirectedS, VertexData, EdgeData, boost::no_property, boost::listS> j = g;
+		BoostGraph k = j;
+
+		std::cout << "ratman" << boost::core::demangle(typeid(j).name()) << "rodentman" << std::endl;
 }
 
 Graph::~Graph() {
