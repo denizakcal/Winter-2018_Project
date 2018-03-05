@@ -2,7 +2,7 @@
 #ifndef THEGAME_HPP_
 #define THEGAME_HPP_
 
-#include "list"
+#include <vector>
 #include "Player.hpp"
 
 class TheGame {

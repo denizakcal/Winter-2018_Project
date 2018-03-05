@@ -2,6 +2,7 @@
 #ifndef USERINTERFACE_H_
 #define USERINTERFACE_H_
 
+#include "TheGame.hpp"
 #include "Graph.hpp"
 
 class UserInterface {
@@ -9,7 +10,7 @@ public:
 	UserInterface();
 	virtual ~UserInterface();
 	Graph loadMap(std::string fileName);
-	void saveMap(Graph gameMap);
+	void saveGame(TheGame theGame);
 };
 
 #endif /* USERINTERFACE_H_ */

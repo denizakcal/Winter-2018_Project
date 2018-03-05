@@ -169,7 +169,7 @@ Graph UserInterface::loadMap(std::string fileName) {
 	return gameGraph;
 }
 
-void UserInterface::saveMap(Graph gameMap) {
+void UserInterface::saveGame(TheGame theGame) {
 
 
 }
