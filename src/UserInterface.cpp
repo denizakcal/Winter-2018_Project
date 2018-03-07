@@ -17,10 +17,6 @@ UserInterface::UserInterface() {
 	// TODO Auto-generated constructor stub
 }
 
-UserInterface::~UserInterface() {
-	// TODO Auto-generated destructor stub
-}
-
 TheGame UserInterface::loadGame(std::string fileName) {
 
 	struct AllDataOfOnePerson {
@@ -183,4 +179,8 @@ TheGame UserInterface::loadGame(std::string fileName) {
 void UserInterface::saveGame(TheGame theGame) {
 
 
+}
+
+UserInterface::~UserInterface() {
+	// TODO Auto-generated destructor stub
 }
