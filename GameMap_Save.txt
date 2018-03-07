@@ -1,0 +1,6 @@
+NumberOfPlayers,PlayerName,NumberOfTokens,NumberOfRegionsOccupied,SomeRegion1,SomeRegion2,...,SomeRegionN,RaceInRegion1,RaceInRegion2,...,RaceInRegionN,RaceMultiplicityInRegion1,RaceMultiplicityInRegion2,...,RaceMultiplicityInRegionN,PowerBadge1,PowerBadge2,...,PowerBadgeN,RegionPieceInRegion1,RegionPieceInRegion2,...,RegionPieceInRegionN
+
+#Example:
+2
+Deniz Akcal,[...]
+Rose Dusfrene,[...]
