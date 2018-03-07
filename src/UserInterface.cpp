@@ -38,143 +38,146 @@ TheGame UserInterface::loadGame(std::string fileName) {
 	ifstream theFile("some_file.txt");
 	int nthTokenSet = 1;
 
+	int ithPerson = 0;
+	int numberOfPlayers = 5; // This temporarily sets it to the highest it could be, and the correct value is parsed later (in the run before the person-data parsing).
 	std::string currentParsedValue;
+	bool beforePersonDataParsing = true;
 
-	AllDataOfOnePerson allDataOfOnePerson;
 
-	while( getline(theFile, currentParsedValue, ',') ) {
+	AllDataOfOnePerson* allDataOfOnePerson;
 
-		switch(nthTokenSet) {
+	while( ithPerson < numberOfPlayers ) {
 
-			case 1: { // An std::string is supposed to be parsed.
+		while( getline(theFile, currentParsedValue, ',') ) {
 
-				allDataOfOnePerson.playerName = currentParsedValue;
-				break;
+			if(beforePersonDataParsing) {
+
+				numberOfPlayers = std::stoi(currentParsedValue);
+				allDataOfOnePerson = new AllDataOfOnePerson[numberOfPlayers];
+				beforePersonDataParsing = false;
+				continue;
 			}
-			case 2: {
 
-				std::string str = currentParsedValue;
-				allDataOfOnePerson.numberOfTokens = std::stoi(str);
-				break;
-			}
-			case 3: {
+			switch(nthTokenSet) {
 
-				std::string str = currentParsedValue;
-				allDataOfOnePerson.numberOfRegionsOccupied = std::stoi(str);
-				break;
-			}
-			case 4: {
+				case 1: { // An std::string is supposed to be parsed.
 
-				allDataOfOnePerson.regions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
+					allDataOfOnePerson[ithPerson].playerName = currentParsedValue;
 
-				for(int i = 1; i < allDataOfOnePerson.numberOfRegionsOccupied; i++) {
-
-					getline(theFile, currentParsedValue, ',');
-//					nthTokenSet++;
-					allDataOfOnePerson.regions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
+					break;
 				}
+				case 2: {
 
-				break;
-			}
-			case 5: {
-
-				if(allDataOfOnePerson.numberOfRegionsOccupied >= 1) {
-
-					Races temp = racesStringToEnum(currentParsedValue);
-					allDataOfOnePerson.races.push_back( temp );
-				}
-
-				int numberOfRaces = allDataOfOnePerson.numberOfRegionsOccupied; // the # of races is the same amount as the # of regions occupied because each region has only 1 race // number of races != number of race tokens
-				for(int i = 1; i < numberOfRaces; i++) {
-
-					getline(theFile, currentParsedValue, ',');
-//					nthTokenSet++;
-					allDataOfOnePerson.races.push_back( racesStringToEnum(currentParsedValue) );
-				}
-
-				break;
-			}
-			case 6: {
-
-				if(allDataOfOnePerson.numberOfRegionsOccupied >= 1) {
 					std::string str = currentParsedValue;
-					allDataOfOnePerson.racesMultiplicity.push_back( std::stoi(str) );
+					allDataOfOnePerson[ithPerson].numberOfTokens = std::stoi(str);
+					break;
 				}
+				case 3: {
 
-				for(int i = 1; i < allDataOfOnePerson.numberOfRegionsOccupied; i++) {
-
-					getline(theFile, currentParsedValue, ',');
-//					nthTokenSet++;
-					allDataOfOnePerson.races.push_back( racesStringToEnum(currentParsedValue) );
+					std::string str = currentParsedValue;
+					allDataOfOnePerson[ithPerson].numberOfRegionsOccupied = std::stoi(str);
+					break;
 				}
+				case 4: {
 
-				break;
+					allDataOfOnePerson[ithPerson].regions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
+
+					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
+
+						getline(theFile, currentParsedValue, ',');
+						allDataOfOnePerson[ithPerson].regions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
+					}
+
+					break;
+				}
+				case 5: {
+
+					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
+
+						Races temp = racesStringToEnum(currentParsedValue);
+						allDataOfOnePerson[ithPerson].races.push_back( temp );
+					}
+
+					int numberOfRaces = allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; // the # of races is the same amount as the # of regions occupied because each region has only 1 race // number of races != number of race tokens
+					for(int i = 1; i < numberOfRaces; i++) {
+
+						getline(theFile, currentParsedValue, ',');
+						allDataOfOnePerson[ithPerson].races.push_back( racesStringToEnum(currentParsedValue) );
+					}
+
+					break;
+				}
+				case 6: {
+
+					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
+						std::string str = currentParsedValue;
+						allDataOfOnePerson[ithPerson].racesMultiplicity.push_back( std::stoi(str) );
+					}
+
+					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
+
+						getline(theFile, currentParsedValue, ',');
+						allDataOfOnePerson[ithPerson].races.push_back( racesStringToEnum(currentParsedValue) );
+					}
+
+					break;
+				}
+				case 7: {
+
+					int numberOfPowerBadges = allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; // the # of power badges is the same amount as the # of regions occupied because each region has only 1 race, and each race is chosen with its accompanying PowerBadge.
+
+					if(numberOfPowerBadges >= 1) {
+						allDataOfOnePerson[ithPerson].powerBadges.push_back( powerBadgesStringToEnum(currentParsedValue) );
+					}
+
+					for(int i = 1; i < numberOfPowerBadges; i++) {
+
+						getline(theFile, currentParsedValue, ',');
+						allDataOfOnePerson[ithPerson].races.push_back( racesStringToEnum(currentParsedValue) );
+					}
+
+					break;
+				}
+				case 8: {
+
+					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
+						allDataOfOnePerson[ithPerson].regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
+					}
+
+					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
+
+						getline(theFile, currentParsedValue, ',');
+						allDataOfOnePerson[ithPerson].regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
+					}
+
+					nthTokenSet = 0;
+					ithPerson++;
+
+					break;
+				}
+				default: {
+
+					std::cout << "default case of switch statement of loadGame(wtv) ran" << std::endl;
+					break;
+				}
 			}
-			case 7: {
 
-				int numberOfPowerBadges = allDataOfOnePerson.numberOfRegionsOccupied; // the # of power badges is the same amount as the # of regions occupied because each region has only 1 race, and each race is chosen with its accompanying PowerBadge.
-
-				if(numberOfPowerBadges >= 1) {
-					allDataOfOnePerson.powerBadges.push_back( powerBadgesStringToEnum(currentParsedValue) );
-				}
-
-				for(int i = 1; i < numberOfPowerBadges; i++) {
-
-					getline(theFile, currentParsedValue, ',');
-//					nthTokenSet++;
-					allDataOfOnePerson.races.push_back( racesStringToEnum(currentParsedValue) );
-				}
-
-				break;
-			}
-			case 8: {
-
-				if(allDataOfOnePerson.numberOfRegionsOccupied >= 1) {
-					allDataOfOnePerson.regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
-				}
-
-				for(int i = 1; i < allDataOfOnePerson.numberOfRegionsOccupied; i++) {
-
-					getline(theFile, currentParsedValue, ',');
-//					nthTokenSet++;
-					allDataOfOnePerson.regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
-				}
-
-				break;
-			}
-			default: {
-
-				std::cout << "default case of switch statement ran" << std::endl;
-				break;
-			}
+			nthTokenSet++;
 		}
-//		std::cout << currentParsedValue << std::endl;
-		nthTokenSet++;
 	}
 
-	/*// The following eight lines are just for testing purposes (and will be removed later).
-	std::cout << allDataOfOnePerson.numberOfRegionsOccupied << std::endl;
-	std::cout << allDataOfOnePerson.numberOfTokens << std::endl;
-	std::cout << allDataOfOnePerson.playerName << std::endl;
-	std::cout << powerBadgesEnumToString(allDataOfOnePerson.powerBadges.at(0)) << std::endl;
-	std::cout << racesEnumToString(allDataOfOnePerson.races.at(0)) << std::endl;
-	std::cout << allDataOfOnePerson.racesMultiplicity.at(0) << std::endl;
-	std::cout << regionPiecesEnumToString( allDataOfOnePerson.regionPieces.at(0) ) << std::endl;
-	std::cout << regionsOfMapsEnumToString( allDataOfOnePerson.regions.at(0) ) << std::endl;*/
+	std::vector<Player> players;
 
-	Player playerOne;
-	Player playerTwo;
+	for(int i = 0; i < numberOfPlayers; i++) {
 
-	Graph gameGraph(2);
+		Graph g = Graph(numberOfPlayers);
+		Graph* gPtr = &g;
+		Player p;
+		p.setGraph(gPtr);
+		players.push_back(p);
+	}
 
-	std::vector<Player> playersVector;
-
-	playersVector.push_back(playerOne);
-	playersVector.push_back(playerTwo);
-
-	TheGame theGame(playersVector);
-
-	return theGame;
+	return TheGame(players);
 }
 
 void UserInterface::saveGame(TheGame theGame) {
