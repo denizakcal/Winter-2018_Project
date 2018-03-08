@@ -7,8 +7,7 @@
 
 #include "Graph.hpp"
 #include "RegionsOfMaps.hpp"
-
-#include "UserInterface.hpp"
+#include "TextualUserInterface.hpp"
 
 using namespace boost;
 using namespace std;
@@ -18,7 +17,7 @@ int main(void) {
 	Graph gr(2);
 	gr.buildMap();
 
-	UserInterface ui;
+	TextualUserInterface ui;
 	std::string fileName("some_file.txt");
 	ui.loadGame(fileName);
 
