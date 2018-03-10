@@ -5,7 +5,7 @@
 
 #include <string>
 
-Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<PowerBadges> powerBadges, std::vector<RegionPieces> regionPieces) {
+Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<PowerBadges> powerBadges, std::vector<RegionPieces> regionPieces, int playerNumber) {
 
 	this->multiplicityOfRaceTokensNotOnBoard = multiplicityOfRaceTokensNotOnBoard;
 	this->subgraph = subgraph;
@@ -16,6 +16,7 @@ Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::str
 	this->racesMultiplicity = racesMultiplicity;
 	this->powerBadges = powerBadges;
 	this->regionPieces = regionPieces;
+	this->playerNumber = playerNumber;
 }
 
 void Player::setName(std::string name) {

@@ -33,6 +33,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		std::vector<int> racesMultiplicity;
 		std::vector<PowerBadges> powerBadges;
 		std::vector<RegionPieces> regionPieces;
+		int playerNumber;
 	};
 
 	ifstream theFile("some_file.txt");
@@ -148,6 +149,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 				}
 				case 9: {
 
+					// For 9th token set:
 					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
 						allDataOfOnePerson[ithPerson].regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
 					}
@@ -158,11 +160,15 @@ TheGame UserInterface::loadGame(std::string fileName) {
 						allDataOfOnePerson[ithPerson].regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
 					}
 
+					// For end stuff:
+					allDataOfOnePerson[ithPerson].playerNumber = i+1;
+
 					nthTokenSet = 0;
 					ithPerson++;
 
 					break;
 				}
+
 				default: {
 
 					std::cout << "default case of switch statement of loadGame(wtv) ran" << std::endl;
@@ -189,8 +195,9 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		std::vector<int> racesMultiplicity;
 		std::vector<PowerBadges> powerBadges;
 		std::vector<RegionPieces> regionPieces;
+		int playerNumber = allDataOfOnePerson[i].playerNumber;
 
-		Player p(multiplicityOfRaceTokensNotOnBoard,gPtr,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPieces);
+		Player p(multiplicityOfRaceTokensNotOnBoard,gPtr,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPieces, playerNumber);
 
 		players.push_back(p);
 	}

@@ -21,9 +21,10 @@ class Player {
 		std::vector<int> racesMultiplicity;
 		std::vector<PowerBadges> powerBadges;
 		std::vector<RegionPieces> regionPieces;
+		int playerNumber;
 
 	public:
-		Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<PowerBadges> powerBadges, std::vector<RegionPieces> regionPieces);
+		Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<PowerBadges> powerBadges, std::vector<RegionPieces> regionPieces, int playerNumber);
 		virtual ~Player();
 		void setName(std::string name);
 		std::string getName();
