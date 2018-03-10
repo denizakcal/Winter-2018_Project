@@ -56,7 +56,7 @@ bool TheGame::isRollEnough(std::vector<Player> players, int playerNumberOfAttack
 
 	Player* defendingPlayer;
 
-	for(int i = 0; i < players.size(); i++) {
+	for(unsigned int i = 0; i < players.size(); i++) {
 
 		if( players.at(i).isConquered(regionToPotentiallyConquer) ) {
 
@@ -73,7 +73,7 @@ bool TheGame::isConquerableWithoutRoll(std::vector<Player> players, int playerNu
 
 	Player* defendingPlayer;
 
-	for(int i = 0; i < players.size(); i++) {
+	for(unsigned int i = 0; i < players.size(); i++) {
 
 		if( players.at(i).isConquered(regionToPotentiallyConquer) ) {
 
