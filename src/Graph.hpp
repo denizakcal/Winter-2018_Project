@@ -39,7 +39,8 @@ public:
 	int getNumberOfPlayers() {return numberOfPlayers;}
 	void buildMap();
 	void addRegion(BoostGraph g, RegionsOfMaps region);
-
+	bool isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer);
+	bool contains(RegionsOfMaps r);
 };
 
 #endif /* GRAPH_HPP_ */

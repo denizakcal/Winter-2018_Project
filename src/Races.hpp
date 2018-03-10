@@ -1,4 +1,8 @@
+#ifndef RACES_HPP_
+#define RACES_HPP_
+
 enum class Races {
+
 	AMAZONS,
 	DWARVES,
 	ELVES,
@@ -15,3 +19,4 @@ enum class Races {
 	WIZARDS,
 	NO_RACE
 }; // I didn't put a blank race, at least not yet.
+#endif /* RACES_HPP_ */

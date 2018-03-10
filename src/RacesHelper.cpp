@@ -1,3 +1,4 @@
+
 #include "RacesHelper.hpp"
 
 std::string racesEnumToString(Races racesEnum) {

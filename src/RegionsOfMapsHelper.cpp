@@ -1,3 +1,6 @@
+#ifndef REGIONSOFMAPSHELPER_CPP
+#define REGIONSOFMAPSHELPER_CPP
+
 #include "RegionsOfMapsHelper.hpp"
 
 #include "RegionsOfMaps.hpp"
@@ -3094,3 +3097,5 @@ RegionsOfMaps regionsOfMapsStringToEnum(std::string regionString) {
 
 	return RegionsOfMaps::NO_REGION;
 }
+
+#endif // REGIONSOFMAPSHELPER_CPP

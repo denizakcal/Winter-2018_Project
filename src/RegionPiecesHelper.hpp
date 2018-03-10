@@ -1,14 +1,12 @@
+// WHY DOES THE ifndef STUFF MAKE THE CODE NOT WORK AT ALL, ONLY IN THIS FILE?!!!
 
-#ifndef REGIONPIECESHELPER_HPP_
-#define REGIONPIECESHELPER_HPP_
+//#ifndef REGIONPIECESHELPER_HPP_
+//#define REGIONPIECESHELPER_HPP_
 
 #include "RegionPieces.hpp"
-
 #include <string>
-
-using namespace std;
 
 RegionPieces regionPiecesStringToEnum(std::string regionPiecesString);
 std::string regionPiecesEnumToString(RegionPieces regionPiecesEnum);
 
-#endif /* REGIONPIECESHELPER_HPP_ */
+//#endif /* REGIONPIECESHELPER_HPP_ */

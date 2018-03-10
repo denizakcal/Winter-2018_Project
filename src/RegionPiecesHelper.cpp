@@ -1,6 +1,7 @@
 #ifndef REGIONPIECESHELPER_CPP_
 #define REGIONPIECESHELPER_CPP_
 
+#include "RegionPieces.hpp"
 #include "RegionPiecesHelper.hpp"
 #include <string>
 

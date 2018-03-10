@@ -1,5 +1,7 @@
-enum class RegionPieces
-{
+#ifndef REGIONPIECESHELPER_HPP_
+#define REGIONPIECESHELPER_HPP_
+
+enum class RegionPieces {
     TROLL_LAIR,
     FORTRESS,
     MOUNTAIN,
@@ -9,3 +11,5 @@ enum class RegionPieces
     DRAGON,
 	NO_REGION_PIECE
 };
+
+#endif /* REGIONPIECES_HPP_ */

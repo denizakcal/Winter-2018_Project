@@ -1,5 +1,5 @@
-#ifndef REGIONSOFMAPSHELPER_H
-#define REGIONSOFMAPSHELPER_H
+#ifndef REGIONSOFMAPSHELPER_HPP
+#define REGIONSOFMAPSHELPER_HPP
 
 #include "RegionsOfMaps.hpp"
 #include <string>
@@ -15,4 +15,4 @@ bool isSameMap(RegionsOfMaps regionsOfMaps);
 std::string regionsOfMapsEnumToString(RegionsOfMaps regionsOfMaps);
 RegionsOfMaps regionsOfMapsStringToEnum(std::string regionString);
 
-#endif // REGIONSOFMAPSHELPER_H
+#endif // REGIONSOFMAPSHELPER_HPP

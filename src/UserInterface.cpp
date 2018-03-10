@@ -1,3 +1,5 @@
+#ifndef USERINTERFACE_CPP_
+#define USERINTERFACE_CPP_
 
 #include "UserInterface.hpp"
 #include <fstream>
@@ -5,6 +7,7 @@
 #include "RegionsOfMaps.hpp"
 #include "RegionsOfMapsHelper.hpp"
 #include "PowerBadgesHelper.hpp"
+#include "RegionPieces.hpp"
 #include "RegionPiecesHelper.hpp"
 #include "RacesHelper.hpp"
 #include <vector>
@@ -22,8 +25,9 @@ TheGame UserInterface::loadGame(std::string fileName) {
 	struct AllDataOfOnePerson {
 
 		std::string playerName;
-		int numberOfTokens;
-		int numberOfRegionsOccupied;
+		int numberOfCoins;
+		int multiplicityOfRaceTokensNotOnBoard;
+		int numberOfRegionsOccupied; // This variable is only to help parse the data; Player objects don't need this, since they can figure it out via regions.size() or wtv.
 		std::vector<RegionsOfMaps> regions;
 		std::vector<Races> races;
 		std::vector<int> racesMultiplicity;
@@ -65,16 +69,24 @@ TheGame UserInterface::loadGame(std::string fileName) {
 				case 2: {
 
 					std::string str = currentParsedValue;
-					allDataOfOnePerson[ithPerson].numberOfTokens = std::stoi(str);
+					allDataOfOnePerson[ithPerson].numberOfCoins = std::stoi(str);
 					break;
 				}
+
 				case 3: {
+
+					std::string str = currentParsedValue;
+					allDataOfOnePerson[ithPerson].multiplicityOfRaceTokensNotOnBoard = std::stoi(str);
+					break;
+				}
+
+				case 4: {
 
 					std::string str = currentParsedValue;
 					allDataOfOnePerson[ithPerson].numberOfRegionsOccupied = std::stoi(str);
 					break;
 				}
-				case 4: {
+				case 5: {
 
 					allDataOfOnePerson[ithPerson].regions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
 
@@ -86,7 +98,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 					break;
 				}
-				case 5: {
+				case 6: {
 
 					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
 
@@ -103,7 +115,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 					break;
 				}
-				case 6: {
+				case 7: {
 
 					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
 						std::string str = currentParsedValue;
@@ -118,7 +130,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 					break;
 				}
-				case 7: {
+				case 8: {
 
 					int numberOfPowerBadges = allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; // the # of power badges is the same amount as the # of regions occupied because each region has only 1 race, and each race is chosen with its accompanying PowerBadge.
 
@@ -134,7 +146,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 					break;
 				}
-				case 8: {
+				case 9: {
 
 					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
 						allDataOfOnePerson[ithPerson].regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
@@ -168,8 +180,18 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 		Graph g = Graph(numberOfPlayers);
 		Graph* gPtr = &g;
-		Player p;
-		p.setGraph(gPtr);
+
+		std::string playerName = allDataOfOnePerson[i].playerName;
+		int numberOfCoins = allDataOfOnePerson[i].numberOfCoins;
+		int multiplicityOfRaceTokensNotOnBoard = allDataOfOnePerson[i].multiplicityOfRaceTokensNotOnBoard;
+		std::vector<RegionsOfMaps> conqueredRegions;
+		std::vector<Races> racesInConqueredRegions;
+		std::vector<int> racesMultiplicity;
+		std::vector<PowerBadges> powerBadges;
+		std::vector<RegionPieces> regionPieces;
+
+		Player p(multiplicityOfRaceTokensNotOnBoard,gPtr,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPieces);
+
 		players.push_back(p);
 	}
 
@@ -184,3 +206,5 @@ void UserInterface::saveGame(TheGame theGame) {
 UserInterface::~UserInterface() {
 	// TODO Auto-generated destructor stub
 }
+
+#endif /* USERINTERFACE_CPP_ */

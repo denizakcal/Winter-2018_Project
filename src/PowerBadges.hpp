@@ -1,3 +1,5 @@
+#ifndef POWERBADGES_HPP_
+#define POWERBADGES_HPP_
 
 enum class PowerBadges {
 
@@ -23,3 +25,5 @@ enum class PowerBadges {
     WEALTHY,
 	NO_POWER_BADGE
 };
+
+#endif /* POWERBADGES_HPP_ */
