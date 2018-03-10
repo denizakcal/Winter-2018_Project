@@ -67,9 +67,21 @@ bool TheGame::isRollEnough(std::vector<Player> players, int playerNumberOfAttack
 	return attackingPlayer.isAdjacentToConquered(regionToPotentiallyConquer) && multiplicityOfAttackingRaceTokens >= 1 && (multiplicityOfAttackingRaceTokens+dieAmount)-defendingPlayer->getMultiplicityOfRaceTokensInGivenRegion(regionToPotentiallyConquer);
 }
 
-bool TheGame::isConquerableWithoutRoll(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer) {
+bool TheGame::isConquerableWithoutRoll(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens) {
 
-	// code
+	Player attackingPlayer = players.at(playerNumberOfAttackingPlayer-1); // the players are added in order of playerNumber to the vector
+
+	Player* defendingPlayer;
+
+	for(int i = 0; i < players.size(); i++) {
+
+		if( players.at(i).isConquered(regionToPotentiallyConquer) ) {
+
+			*defendingPlayer = players.at(i);
+		}
+	}
+
+	return attackingPlayer.isAdjacentToConquered(regionToPotentiallyConquer) && multiplicityOfAttackingRaceTokens >= 1 && multiplicityOfAttackingRaceTokens - defendingPlayer->getMultiplicityOfRaceTokensInGivenRegion(regionToPotentiallyConquer);
 }
 
 int TheGame::roll(void) {
