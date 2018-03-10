@@ -52,7 +52,7 @@ bool TheGame::nextTurn() { // false if there are no more turns; true if there ar
 bool TheGame::isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens) { // is the die roll enough to conquer a region
 
 	int dieAmount = roll();
-	Player attackingPlayer = players.at(playerNumberOfAttackingPlayer-1);
+	Player attackingPlayer = players.at(playerNumberOfAttackingPlayer-1); // the players are added in order of playerNumber to the vector
 
 	Player* defendingPlayer;
 
