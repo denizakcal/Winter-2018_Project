@@ -28,8 +28,8 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		int numberOfCoins;
 		int multiplicityOfRaceTokensNotOnBoard;
 		int numberOfRegionsOccupied; // This variable is only to help parse the data; Player objects don't need this, since they can figure it out via regions.size() or wtv.
-		std::vector<RegionsOfMaps> regions;
-		std::vector<Races> races;
+		std::vector<RegionsOfMaps> conqueredRegions;
+		std::vector<Races> racesInConqueredRegions;
 		std::vector<int> racesMultiplicity;
 		std::vector<PowerBadges> powerBadges;
 		std::vector<RegionPieces> regionPieces;
@@ -89,12 +89,12 @@ TheGame UserInterface::loadGame(std::string fileName) {
 				}
 				case 5: {
 
-					allDataOfOnePerson[ithPerson].regions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
+					allDataOfOnePerson[ithPerson].conqueredRegions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
 
 					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
 
 						getline(theFile, currentParsedValue, ',');
-						allDataOfOnePerson[ithPerson].regions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
+						allDataOfOnePerson[ithPerson].conqueredRegions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
 					}
 
 					break;
@@ -104,14 +104,14 @@ TheGame UserInterface::loadGame(std::string fileName) {
 					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
 
 						Races temp = racesStringToEnum(currentParsedValue);
-						allDataOfOnePerson[ithPerson].races.push_back( temp );
+						allDataOfOnePerson[ithPerson].racesInConqueredRegions.push_back( temp );
 					}
 
 					int numberOfRaces = allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; // the # of races is the same amount as the # of regions occupied because each region has only 1 race // number of races != number of race tokens
 					for(int i = 1; i < numberOfRaces; i++) {
 
 						getline(theFile, currentParsedValue, ',');
-						allDataOfOnePerson[ithPerson].races.push_back( racesStringToEnum(currentParsedValue) );
+						allDataOfOnePerson[ithPerson].racesInConqueredRegions.push_back( racesStringToEnum(currentParsedValue) );
 					}
 
 					break;
@@ -126,7 +126,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
 
 						getline(theFile, currentParsedValue, ',');
-						allDataOfOnePerson[ithPerson].races.push_back( racesStringToEnum(currentParsedValue) );
+						allDataOfOnePerson[ithPerson].racesInConqueredRegions.push_back( racesStringToEnum(currentParsedValue) );
 					}
 
 					break;
@@ -142,7 +142,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 					for(int i = 1; i < numberOfPowerBadges; i++) {
 
 						getline(theFile, currentParsedValue, ',');
-						allDataOfOnePerson[ithPerson].races.push_back( racesStringToEnum(currentParsedValue) );
+						allDataOfOnePerson[ithPerson].racesInConqueredRegions.push_back( racesStringToEnum(currentParsedValue) );
 					}
 
 					break;
@@ -161,7 +161,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 					}
 
 					// For end stuff:
-					allDataOfOnePerson[ithPerson].playerNumber = i+1;
+					allDataOfOnePerson[ithPerson].playerNumber = ithPerson+1;
 
 					nthTokenSet = 0;
 					ithPerson++;
@@ -190,11 +190,11 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		std::string playerName = allDataOfOnePerson[i].playerName;
 		int numberOfCoins = allDataOfOnePerson[i].numberOfCoins;
 		int multiplicityOfRaceTokensNotOnBoard = allDataOfOnePerson[i].multiplicityOfRaceTokensNotOnBoard;
-		std::vector<RegionsOfMaps> conqueredRegions;
-		std::vector<Races> racesInConqueredRegions;
-		std::vector<int> racesMultiplicity;
-		std::vector<PowerBadges> powerBadges;
-		std::vector<RegionPieces> regionPieces;
+		std::vector<RegionsOfMaps> conqueredRegions = allDataOfOnePerson[i].conqueredRegions;
+		std::vector<Races> racesInConqueredRegions = allDataOfOnePerson[i].racesInConqueredRegions;
+		std::vector<int> racesMultiplicity = allDataOfOnePerson[i].racesMultiplicity;
+		std::vector<PowerBadges> powerBadges = allDataOfOnePerson[i].powerBadges;
+		std::vector<RegionPieces> regionPieces = allDataOfOnePerson[i].regionPieces;
 		int playerNumber = allDataOfOnePerson[i].playerNumber;
 
 		Player p(multiplicityOfRaceTokensNotOnBoard,gPtr,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPieces, playerNumber);
