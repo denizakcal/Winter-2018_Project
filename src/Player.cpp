@@ -7,6 +7,16 @@
 
 #include <string>
 
+/*std::vector<Player> Player::generatePlayers() {
+
+
+}*/
+
+/*Player::Player() { // THE BODY OF THIS CONSTRUCTOR NEEDS IMPROVEMENT!!!
+
+	this->Player(0,nullptr,"Player " + amountOfPlayers+1,0,NULL,NULL,NULL,NULL,NULL,amountOfPlayers+1,NULL);
+}*/
+
 Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<PowerBadges> powerBadges, std::vector< std::vector<RegionPieces> > regionPiecesSets, int playerNumber, std::map<int,int> pipToTimesRolledMap) {
 
 	this->multiplicityOfRaceTokensNotOnBoard = multiplicityOfRaceTokensNotOnBoard;
@@ -27,6 +37,8 @@ Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::str
 
 	this->playerNumber = playerNumber;
 	this->pipToTimesRolledMap = pipToTimesRolledMap;
+
+	amountOfPlayers++;
 }
 
 void Player::setName(std::string name) {
