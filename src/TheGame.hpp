@@ -9,7 +9,6 @@
 class TheGame {
 
 	private:
-		bool nextTurn();
 		const int MAXIMUM_AMOUNT_OF_TURNS_PER_PLAYER = 10;
 		int maximumAmountOfTurnsInTotal;
 		std::vector<Player> players;
@@ -23,6 +22,7 @@ class TheGame {
 		bool isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens);
 		bool isConquerableWithoutRoll(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens);
 		void updateGame(TheGame);
+		bool nextTurn();
 };
 
 #endif /* THEGAME_HPP_ */
