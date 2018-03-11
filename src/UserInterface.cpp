@@ -32,8 +32,11 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		std::vector<Races> racesInConqueredRegions;
 		std::vector<int> racesMultiplicity;
 		std::vector<PowerBadges> powerBadges;
-		std::vector<RegionPieces> regionPieces;
+		std::vector< std::vector<RegionPieces> > regionPiecesSets;
+		std::vector<int> regionPieceSetMultiplicityPerRegion;
+//		std::map< RegionsOfMaps, std::vector<RegionPieces> >;
 		int playerNumber;
+		std::map<int,int> pipToTimesRolledMap;
 	};
 
 	ifstream theFile("some_file.txt");
@@ -76,18 +79,52 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 				case 3: {
 
-					std::string str = currentParsedValue;
-					allDataOfOnePerson[ithPerson].multiplicityOfRaceTokensNotOnBoard = std::stoi(str);
+					int amountOfZeroesOrBlanks = std::stoi(currentParsedValue);
+					allDataOfOnePerson[ithPerson].pipToTimesRolledMap.insert ( std::pair<int,int>(0,amountOfZeroesOrBlanks) );
+
 					break;
 				}
 
 				case 4: {
 
-					std::string str = currentParsedValue;
-					allDataOfOnePerson[ithPerson].numberOfRegionsOccupied = std::stoi(str);
+					int amountOfOnes = std::stoi(currentParsedValue);
+					allDataOfOnePerson[ithPerson].pipToTimesRolledMap.insert ( std::pair<int,int>(1,amountOfOnes) );
+
 					break;
 				}
+
 				case 5: {
+
+					int amountOfTwos = std::stoi(currentParsedValue);
+					allDataOfOnePerson[ithPerson].pipToTimesRolledMap.insert ( std::pair<int,int>(2,amountOfTwos) );
+
+					break;
+				}
+
+				case 6: {
+
+					int amountOfThrees = std::stoi(currentParsedValue);
+					allDataOfOnePerson[ithPerson].pipToTimesRolledMap.insert ( std::pair<int,int>(3,amountOfThrees) );
+
+					break;
+				}
+
+				case 7: {
+
+					std::string str = currentParsedValue;
+					allDataOfOnePerson[ithPerson].multiplicityOfRaceTokensNotOnBoard = std::stoi(str);
+
+					break;
+				}
+
+				case 8: {
+
+					std::string str = currentParsedValue;
+					allDataOfOnePerson[ithPerson].numberOfRegionsOccupied = std::stoi(str);
+
+					break;
+				}
+				case 9: {
 
 					allDataOfOnePerson[ithPerson].conqueredRegions.push_back( regionsOfMapsStringToEnum(currentParsedValue) );
 
@@ -99,7 +136,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 					break;
 				}
-				case 6: {
+				case 10: {
 
 					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
 
@@ -116,7 +153,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 					break;
 				}
-				case 7: {
+				case 11: {
 
 					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
 						std::string str = currentParsedValue;
@@ -126,12 +163,13 @@ TheGame UserInterface::loadGame(std::string fileName) {
 					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
 
 						getline(theFile, currentParsedValue, ',');
-						allDataOfOnePerson[ithPerson].racesInConqueredRegions.push_back( racesStringToEnum(currentParsedValue) );
+						std::string str = currentParsedValue;
+						allDataOfOnePerson[ithPerson].racesMultiplicity.push_back( std::stoi(str) );
 					}
 
 					break;
 				}
-				case 8: {
+				case 12: {
 
 					int numberOfPowerBadges = allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; // the # of power badges is the same amount as the # of regions occupied because each region has only 1 race, and each race is chosen with its accompanying PowerBadge.
 
@@ -142,25 +180,74 @@ TheGame UserInterface::loadGame(std::string fileName) {
 					for(int i = 1; i < numberOfPowerBadges; i++) {
 
 						getline(theFile, currentParsedValue, ',');
-						allDataOfOnePerson[ithPerson].racesInConqueredRegions.push_back( racesStringToEnum(currentParsedValue) );
+						allDataOfOnePerson[ithPerson].powerBadges.push_back( powerBadgesStringToEnum(currentParsedValue) );
 					}
 
 					break;
 				}
-				case 9: {
+				
+				case 13: {
 
-					// For 9th token set:
 					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
-						allDataOfOnePerson[ithPerson].regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
+
+						std::string str = currentParsedValue;
+						allDataOfOnePerson[ithPerson].regionPieceSetMultiplicityPerRegion.push_back( std::stoi(str) );
 					}
 
 					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
 
 						getline(theFile, currentParsedValue, ',');
-						allDataOfOnePerson[ithPerson].regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
+						std::string str = currentParsedValue;
+						allDataOfOnePerson[ithPerson].regionPieceSetMultiplicityPerRegion.push_back( std::stoi(str) );
 					}
 
-					// For end stuff:
+					break;
+				}
+				
+				case 14: {
+
+					// For last token set:
+
+					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
+
+						std::vector<RegionPieces> regionPiecesSetOfCurrentRegion;
+						regionPiecesSetOfCurrentRegion.push_back( regionPiecesStringToEnum(currentParsedValue) );
+
+						int multiplicityOfRegionPieceSetForCurrentRegion = allDataOfOnePerson[ithPerson].regionPieceSetMultiplicityPerRegion.at(0);
+						for(int i = 1; i < multiplicityOfRegionPieceSetForCurrentRegion; i++) {
+
+							getline(theFile, currentParsedValue, ',');
+							regionPiecesSetOfCurrentRegion.push_back( regionPiecesStringToEnum(currentParsedValue) );
+						}
+						allDataOfOnePerson[ithPerson].regionPiecesSets.push_back(regionPiecesSetOfCurrentRegion);
+					}
+
+					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
+
+						std::vector<RegionPieces> regionPiecesSetOfCurrentRegion;
+						int multiplicityOfRegionPieceSetForCurrentRegion = allDataOfOnePerson[ithPerson].regionPieceSetMultiplicityPerRegion.at(i);
+						for(int j = 0; j < multiplicityOfRegionPieceSetForCurrentRegion; j++) {
+
+							getline(theFile, currentParsedValue, ',');
+							regionPiecesSetOfCurrentRegion.push_back( regionPiecesStringToEnum(currentParsedValue) );
+						}
+						allDataOfOnePerson[ithPerson].regionPiecesSets.push_back(regionPiecesSetOfCurrentRegion);
+					}
+
+					/*for(int j = 0; j < allDataOfOnePerson[ithPerson].regionPieceSetMultiplicityPerRegion.size(); j++) {
+
+						allDataOfOnePerson[ithPerson].regionPieceSetMultiplicityPerRegion.at(0);
+					}
+
+					allDataOfOnePerson[ithPerson].regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
+
+					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
+
+						getline(theFile, currentParsedValue, ',');
+						allDataOfOnePerson[ithPerson].regionPieces.push_back( regionPiecesStringToEnum(currentParsedValue) );
+					}*/
+
+					// For stuff after all token sets:
 					allDataOfOnePerson[ithPerson].playerNumber = ithPerson+1;
 
 					nthTokenSet = 0;
@@ -194,10 +281,11 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		std::vector<Races> racesInConqueredRegions = allDataOfOnePerson[i].racesInConqueredRegions;
 		std::vector<int> racesMultiplicity = allDataOfOnePerson[i].racesMultiplicity;
 		std::vector<PowerBadges> powerBadges = allDataOfOnePerson[i].powerBadges;
-		std::vector<RegionPieces> regionPieces = allDataOfOnePerson[i].regionPieces;
+		std::vector< std::vector<RegionPieces> > regionPieces = allDataOfOnePerson[i].regionPiecesSets;
 		int playerNumber = allDataOfOnePerson[i].playerNumber;
+		std::map<int,int> pipToTimesRolledMap = allDataOfOnePerson[i].pipToTimesRolledMap;
 
-		Player p(multiplicityOfRaceTokensNotOnBoard,gPtr,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPieces, playerNumber);
+		Player p(multiplicityOfRaceTokensNotOnBoard,gPtr,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPieces, playerNumber, pipToTimesRolledMap);
 
 		players.push_back(p);
 	}

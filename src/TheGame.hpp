@@ -20,7 +20,6 @@ class TheGame {
 		TheGame(std::vector<Player> players);
 		void run();
 		int getAmountOfPlayers();
-		int roll(void);
 		bool isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens);
 		bool isConquerableWithoutRoll(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens);
 };

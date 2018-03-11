@@ -51,8 +51,8 @@ bool TheGame::nextTurn() { // false if there are no more turns; true if there ar
 
 bool TheGame::isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens) { // is the die roll enough to conquer a region
 
-	int dieAmount = roll();
 	Player attackingPlayer = players.at(playerNumberOfAttackingPlayer-1); // the players are added in order of playerNumber to the vector
+	int dieAmount = attackingPlayer.roll();
 
 	Player* defendingPlayer;
 
@@ -82,35 +82,4 @@ bool TheGame::isConquerableWithoutRoll(std::vector<Player> players, int playerNu
 	}
 
 	return attackingPlayer.isAdjacentToConquered(regionToPotentiallyConquer) && multiplicityOfAttackingRaceTokens >= 1 && multiplicityOfAttackingRaceTokens - defendingPlayer->getMultiplicityOfRaceTokensInGivenRegion(regionToPotentiallyConquer);
-}
-
-int TheGame::roll(void) {
-
-	int r;
-	srand(time(NULL));
-	r = rand() % 6 + 1;
-
-		switch(r) {
-
-		case 1: {} // Three sides of the die have the number 0.
-		case 2: {} // Three sides of the die have the number 0.
-		case 3: { // Three sides of the die have the number 0.
-			return 0;
-		}
-
-		case 4: {
-			return 1;
-		}
-
-		case 5: {
-			return 2;
-		}
-
-		case 6: {
-			return 3;
-		}
-
-	}
-
-//		return -1;
 }

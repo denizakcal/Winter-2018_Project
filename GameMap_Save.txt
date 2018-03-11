@@ -1,4 +1,4 @@
-NumberOfPlayers,PlayerName,NumberOfCoins,MultiplicityOfRaceTokensNotOnBoard,NumberOfRegionsOccupied,SomeRegion1,SomeRegion2,...,SomeRegionN,RaceInRegion1,RaceInRegion2,...,RaceInRegionN,RaceMultiplicityInRegion1,RaceMultiplicityInRegion2,...,RaceMultiplicityInRegionN,PowerBadge1,PowerBadge2,...,PowerBadgeN,RegionPieceInRegion1,RegionPieceInRegion2,...,RegionPieceInRegionN
+#NumberOfPlayers,PlayerName,NumberOfCoins,AmountfOfZeroesOrBlanks,AmountOfOnes,AmountOfTwos,AmountOfThrees,MultiplicityOfRaceTokensNotOnBoard,NumberOfRegionsOccupied,SomeRegion1,SomeRegion2,...,SomeRegionN,RaceInRegion1,RaceInRegion2,...,RaceInRegionN,RaceMultiplicityInRegion1,RaceMultiplicityInRegion2,...,RaceMultiplicityInRegionN,PowerBadge1,PowerBadge2,...,PowerBadgeN,NumberOfRegionPiecesInRegion1,NumberOfRegionPiecesInRegion2,...,NumberOfRegionPiecesInRegionN,RegionPiece1InRegion1,RegionPiece2InRegion1,...,RegionPieceNInRegion1,RegionPiece1InRegion2,RegionPiece2InRegion2,...,RegionPieceNInRegion2,...,RegionPiece1InRegionN,RegionPiece2InRegionN,...,RegionPieceNInRegionN
 
 #Example:
 2

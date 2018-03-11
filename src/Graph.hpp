@@ -7,11 +7,12 @@
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/connected_components.hpp>
+#include "VertexData.hpp"
 
-struct VertexData
+/*struct VertexData
 {
 	RegionsOfMaps region_name; //?
-};
+};*/
 
 struct EdgeData
 {
@@ -38,7 +39,7 @@ public:
 	virtual ~Graph();
 	int getNumberOfPlayers() {return numberOfPlayers;}
 	void buildMap();
-	void addRegion(BoostGraph g, RegionsOfMaps region);
+	void addRegionPlusData(RegionsOfMaps region, VertexData vertexData);
 	bool isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer);
 	bool contains(RegionsOfMaps r);
 };
