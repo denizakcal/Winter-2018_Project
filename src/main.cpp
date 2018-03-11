@@ -14,7 +14,11 @@ using namespace std;
 
 int main(void) {
 
-	Graph gr(2);
+	TextualUserInterface ui;
+	TheGame theGame = ui.loadGame("some_file.txt");
+	theGame.run();
+
+	/*Graph gr(2);
 	gr.buildMap();
 
 	TextualUserInterface ui;
@@ -25,7 +29,7 @@ int main(void) {
 
 	m->buildMap();
 
-	std::cout << "Testing 123" << std::endl;
+	std::cout << "Testing 123" << std::endl;*/
 	/*system("pause");*/
-	return -1;
+	return 0;
 }
