@@ -83,3 +83,8 @@ bool TheGame::isConquerableWithoutRoll(std::vector<Player> players, int playerNu
 
 	return attackingPlayer.isAdjacentToConquered(regionToPotentiallyConquer) && multiplicityOfAttackingRaceTokens >= 1 && multiplicityOfAttackingRaceTokens - defendingPlayer->getMultiplicityOfRaceTokensInGivenRegion(regionToPotentiallyConquer);
 }
+
+void TheGame::updateGame(TheGame updatedGame) {
+
+	// Make all the fields of this (TheGame) take the values of updatedGame's fields
+}

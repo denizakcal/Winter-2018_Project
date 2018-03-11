@@ -22,6 +22,7 @@ class TheGame {
 		int getAmountOfPlayers();
 		bool isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens);
 		bool isConquerableWithoutRoll(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens);
+		void updateGame(TheGame);
 };
 
 #endif /* THEGAME_HPP_ */
