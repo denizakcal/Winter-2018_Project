@@ -47,7 +47,6 @@ TheGame UserInterface::loadGame(std::string fileName) {
 	std::string currentParsedValue;
 	bool beforePersonDataParsing = true;
 
-
 	AllDataOfOnePerson* allDataOfOnePerson;
 
 	while( ithPerson < numberOfPlayers ) {
