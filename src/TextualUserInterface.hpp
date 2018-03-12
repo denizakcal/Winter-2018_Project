@@ -8,6 +8,7 @@
 class TextualUserInterface : public UserInterface {
 
 	public:
+		TextualUserInterface();
 		virtual void displayCurrentSnapshotOfGame();
 		virtual void displayPauseScreen();
 		virtual void displayMainMenuScreen();
