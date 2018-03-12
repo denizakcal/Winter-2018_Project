@@ -18,6 +18,25 @@ void TextualUserInterface::displayPauseScreen() {
 	std::cout << "Here are your options.:" << std::endl;
 	std::cout << "1) Resume the game." << std::endl;
 	std::cout << "2) Save the game." << std::endl;
+
+	int choice;
+	std::cin >> choice;
+
+	while( choice != 1 && choice != 2 ) {
+
+		std::cout << "You entered an invalid choice." << std::endl;
+		std::cin >> choice;
+	}
+
+	if(choice == 1) {
+
+		displayCurrentSnapshotOfGame();
+	}
+	else /* if(choice == 2) */ {
+
+		std::cout << "Saving the game." << std::endl;
+		//saveGame();
+	}
 }
 
 void TextualUserInterface::displayMainMenuScreen() {
