@@ -2,8 +2,12 @@
 
 void TextualUserInterface::displayCurrentSnapshotOfGame() {
 
-	std::cout << "The game is now resumed." << std::endl;
+	if(isPaused) {
+		std::cout << "The game is now resumed." << std::endl;
+	}
 	isPaused = false;
+
+	std::cout << "Here's what each region on the map contains.:" << std::endl;
 }
 
 void TextualUserInterface::displayPauseScreen() {
