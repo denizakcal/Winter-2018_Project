@@ -1,5 +1,10 @@
 #include "TextualUserInterface.hpp"
 
+TextualUserInterface::TextualUserInterface() {
+
+	// TODO
+}
+
 void TextualUserInterface::displayCurrentSnapshotOfGame() {
 
 	if(isPaused) {
