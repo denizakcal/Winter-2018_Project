@@ -2,13 +2,14 @@
 #ifndef USERINTERFACE_H_
 #define USERINTERFACE_H_
 
-#include "TheGame.hpp"
+//#include "TheGame.hpp"
+class TheGame;
 #include "Graph.hpp"
 
 class UserInterface {
 	protected:
-		int numberOfPlayers = 0;
-		bool isPaused = false;
+		int numberOfPlayers;// = 0;
+		bool isPaused;// = false;
 
 	public:
 		UserInterface();

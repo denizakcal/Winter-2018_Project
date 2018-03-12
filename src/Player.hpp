@@ -25,7 +25,7 @@ class Player {
 		std::vector< std::vector<RegionPieces> > regionPieces;
 		int playerNumber;
 		std::map<int,int> pipToTimesRolledMap;
-		static int amountOfPlayers = 0;
+		//static int amountOfPlayers;// = 0;
 
 		/*typedef std::map<RegionsOfMaps,RegionPieces> RegionsOfMaps_To_RegionPieces;
 		typedef std::map<RegionsOfMaps,Races> RegionsOfMaps_To_Races;

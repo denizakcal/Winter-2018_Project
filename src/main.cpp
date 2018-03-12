@@ -8,6 +8,7 @@
 #include "Graph.hpp"
 #include "RegionsOfMaps.hpp"
 #include "TextualUserInterface.hpp"
+#include "TheGame.hpp"
 
 using namespace boost;
 using namespace std;

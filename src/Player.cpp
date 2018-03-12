@@ -37,8 +37,6 @@ Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::str
 
 	this->playerNumber = playerNumber;
 	this->pipToTimesRolledMap = pipToTimesRolledMap;
-
-	amountOfPlayers++;
 }
 
 void Player::setName(std::string name) {

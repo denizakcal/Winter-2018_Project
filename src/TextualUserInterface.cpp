@@ -28,6 +28,7 @@ void TextualUserInterface::displayMainMenuScreen() {
 void TextualUserInterface::displayMapSelectionScreen() {
 
 	// isn't there only one map per amount of players? TODO
+	std::cout << "TODO" << std::endl;
 }
 
 void TextualUserInterface::displayNumbefOfPlayersSelectionScreen() {
