@@ -25,9 +25,12 @@ int TheGame::getAmountOfPlayers() {
 
 void TheGame::run() {
 
+	userInterface->displayMainMenuScreen();
+
 	while( totalTurnsSoFar < maximumAmountOfTurnsInTotal ) {
 
 		// gameplay continues
+		break;// temp line
 	}
 }
 

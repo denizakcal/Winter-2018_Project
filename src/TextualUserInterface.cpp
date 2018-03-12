@@ -27,7 +27,7 @@ void TextualUserInterface::displayMainMenuScreen() {
 
 void TextualUserInterface::displayMapSelectionScreen() {
 
-	// isn't there only one map per amount of players? TODO
+	// Isn't there only one map per amount of players? I believe that this method shouldn't be required. I'm leaving it here, for now, just in case. TODO
 	std::cout << "TODO" << std::endl;
 }
 
