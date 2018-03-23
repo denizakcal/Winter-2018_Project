@@ -7,6 +7,8 @@
 
 #include <string>
 
+int Player::amountOfPlayers = 0; // initialize the static member to 0
+
 /*std::vector<Player> Player::generatePlayers() {
 
 
@@ -15,6 +17,11 @@
 /*Player::Player() { // THE BODY OF THIS CONSTRUCTOR NEEDS IMPROVEMENT!!!
 
 	this->Player(0,nullptr,"Player " + amountOfPlayers+1,0,NULL,NULL,NULL,NULL,NULL,amountOfPlayers+1,NULL);
+}*/
+
+/*Player::Player() { // temp constructor
+
+	amountOfPlayers++;
 }*/
 
 Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<PowerBadges> powerBadges, std::vector< std::vector<RegionPieces> > regionPiecesSets, int playerNumber, std::map<int,int> pipToTimesRolledMap) {
@@ -37,6 +44,8 @@ Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::str
 
 	this->playerNumber = playerNumber;
 	this->pipToTimesRolledMap = pipToTimesRolledMap;
+
+	amountOfPlayers++;
 }
 
 void Player::setName(std::string name) {
@@ -105,7 +114,8 @@ int Player::roll(void) {
 }
 
 Player::~Player() {
-	// TODO Auto-generated destructor stub
+
+	amountOfPlayers--;
 }
 
 #endif /* PLAYER_HPP_ */
