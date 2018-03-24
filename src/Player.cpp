@@ -24,7 +24,35 @@ int Player::amountOfPlayers = 0; // initialize the static member to 0
 	amountOfPlayers++;
 }*/
 
-Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<PowerBadges> powerBadges, std::vector< std::vector<RegionPieces> > regionPiecesSets, int playerNumber, std::map<int,int> pipToTimesRolledMap) {
+Player::Player() {
+
+	int multiplicityOfRaceTokensNotOnBoard = 0;
+
+	Graph subgraph(2);
+	Graph* subgraphPtr = &subgraph;
+
+	std::string name;
+
+	int numberOfCoins = 0;
+
+	std::vector<RegionsOfMaps> conqueredRegions;
+
+	std::vector<Races> racesInConqueredRegions;
+
+	std::vector<int> racesMultiplicity;
+
+	std::vector<PowerBadges> powerBadges;
+
+	std::vector< std::vector<RegionPieces> > regionPiecesSets;
+
+	int playerNumber = ++Player::amountOfPlayers;
+
+	std::map<int,int> pipToTimesRolledMap;
+
+	init(multiplicityOfRaceTokensNotOnBoard, subgraphPtr, name, numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPiecesSets, playerNumber, pipToTimesRolledMap);
+}
+
+void Player::init(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<PowerBadges> powerBadges, std::vector< std::vector<RegionPieces> > regionPiecesSets, int playerNumber, std::map<int,int> pipToTimesRolledMap) {
 
 	this->multiplicityOfRaceTokensNotOnBoard = multiplicityOfRaceTokensNotOnBoard;
 	this->subgraph = subgraph;
@@ -46,6 +74,10 @@ Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::str
 	this->pipToTimesRolledMap = pipToTimesRolledMap;
 
 	amountOfPlayers++;
+}
+
+Player::Player(int multiplicityOfRaceTokensNotOnBoard, Graph* subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<PowerBadges> powerBadges, std::vector< std::vector<RegionPieces> > regionPiecesSets, int playerNumber, std::map<int,int> pipToTimesRolledMap) {
+	init(multiplicityOfRaceTokensNotOnBoard, subgraph, name, numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPiecesSets, playerNumber, pipToTimesRolledMap);
 }
 
 void Player::setName(std::string name) {
