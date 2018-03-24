@@ -18,6 +18,7 @@ class TheGame {
 		UserInterface* userInterface;
 		int totalTurnsSoFar;
 		int turnOfPlayerN = 1;
+		void init(std::vector<Player> players, UserInterface* userInterface);
 
 	public:
 		TheGame(std::vector<Player> players);

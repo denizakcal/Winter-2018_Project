@@ -3,6 +3,7 @@
 #include "TheGame.hpp"
 #include <ctime>
 #include <iostream>
+#include "TextualUserInterface.hpp"
 
 const int MAXIMUM_AMOUNT_OF_TURNS_PER_PLAYER = 10;
 int maximumAmountOfTurnsInTotal;
@@ -12,10 +13,23 @@ int turnOfPlayerN = 1;
 
 TheGame::TheGame(std::vector<Player> players) {
 
+	TextualUserInterface tui;
+	init(players, &tui);
+}
+
+TheGame::TheGame(std::vector<Player> players, UserInterface* userInterface) {
+
+	init(players, userInterface);
+}
+
+void TheGame::init(std::vector<Player> players, UserInterface* userInterface) {
+
 	// Stuff specific to any object/instance of this class
 	this->players = players;
 	this->totalTurnsSoFar = 0;
 	this->maximumAmountOfTurnsInTotal = MAXIMUM_AMOUNT_OF_TURNS_PER_PLAYER*getAmountOfPlayers();
+
+	this->userInterface = userInterface;
 }
 
 int TheGame::getAmountOfPlayers() {
