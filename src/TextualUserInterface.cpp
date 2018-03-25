@@ -1,6 +1,6 @@
 #include "TextualUserInterface.hpp"
 
-TextualUserInterface::TextualUserInterface() {
+TextualUserInterface::TextualUserInterface(std::vector<Player> players) : UserInterface(players) {
 
 	// TODO
 }

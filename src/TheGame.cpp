@@ -13,7 +13,7 @@ int turnOfPlayerN = 1;
 
 TheGame::TheGame(std::vector<Player> players) {
 
-	TextualUserInterface tui;
+	TextualUserInterface tui(players);
 	init(players, &tui);
 }
 

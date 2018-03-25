@@ -15,22 +15,17 @@ using namespace std;
 
 int main(void) {
 
-	TextualUserInterface ui;
-	TheGame theGame = ui.loadGame("some_file.txt");
+//	TextualUserInterface ui;
+//	TheGame theGame = ui.loadGame("some_file.txt");
+	std::vector<Player> players;
+	Player playerOne;
+	players.push_back(playerOne);
+	Player playerTwo;
+	players.push_back(playerOne);
+	TextualUserInterface tui(players);
+	TheGame theGame(players, &tui);
 	theGame.run();
 
-	/*Graph gr(2);
-	gr.buildMap();
-
-	TextualUserInterface ui;
-	std::string fileName("some_file.txt");
-	ui.loadGame(fileName);
-
-	Graph *m = new Graph(3);
-
-	m->buildMap();
-
-	std::cout << "Testing 123" << std::endl;*/
 	/*system("pause");*/
 	return 0;
 }

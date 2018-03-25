@@ -5,6 +5,8 @@
 //#include "TheGame.hpp"
 class TheGame;
 #include "Graph.hpp"
+#include "Player.hpp"
+#include <vector>
 
 class UserInterface {
 	protected:
@@ -12,7 +14,7 @@ class UserInterface {
 		bool isPaused;// = false;
 
 	public:
-		UserInterface();
+		UserInterface(std::vector<Player> players);
 		virtual ~UserInterface();
 		TheGame loadGame(std::string fileName);
 		void saveGame(TheGame theGame);

@@ -3,12 +3,14 @@
 #define TEXTUALUSERINTERFACE_HPP_
 
 #include "UserInterface.hpp"
+#include "Player.hpp"
+#include <vector>
 
 
 class TextualUserInterface : public UserInterface {
 
 	public:
-		TextualUserInterface();
+		TextualUserInterface(std::vector<Player> players);
 		virtual void displayCurrentSnapshotOfGame();
 		virtual void displayPauseScreen();
 		virtual void displayMainMenuScreen();

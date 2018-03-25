@@ -16,8 +16,9 @@
 
 using namespace std;
 
-UserInterface::UserInterface() {
-	// TODO Auto-generated constructor stub
+UserInterface::UserInterface(std::vector<Player> players) {
+	this->numberOfPlayers = players.size();
+	this->isPaused = false;
 }
 
 TheGame UserInterface::loadGame(std::string fileName) {
@@ -271,7 +272,6 @@ TheGame UserInterface::loadGame(std::string fileName) {
 	for(int i = 0; i < numberOfPlayers; i++) {
 
 		Graph g = Graph(numberOfPlayers);
-		Graph* gPtr = &g;
 
 		std::string playerName = allDataOfOnePerson[i].playerName;
 		int numberOfCoins = allDataOfOnePerson[i].numberOfCoins;
@@ -284,7 +284,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		int playerNumber = allDataOfOnePerson[i].playerNumber;
 		std::map<int,int> pipToTimesRolledMap = allDataOfOnePerson[i].pipToTimesRolledMap;
 
-		Player p(multiplicityOfRaceTokensNotOnBoard,gPtr,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPieces, playerNumber, pipToTimesRolledMap);
+		Player p(multiplicityOfRaceTokensNotOnBoard,g,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPieces, playerNumber, pipToTimesRolledMap);
 
 		players.push_back(p);
 	}
