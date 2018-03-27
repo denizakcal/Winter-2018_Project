@@ -11,11 +11,11 @@ std::vector<Player> players;
 int totalTurnsSoFar;
 int turnOfPlayerN = 1;
 
-TheGame::TheGame(std::vector<Player> players) {
+/*TheGame::TheGame(std::vector<Player> players) {
 
 	TextualUserInterface tui(players);
 	init(players, &tui);
-}
+}*/
 
 TheGame::TheGame(std::vector<Player> players, UserInterface* userInterface) {
 

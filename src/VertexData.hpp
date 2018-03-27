@@ -12,7 +12,7 @@
 struct VertexData {
 
 	//std::map<RegionsOfMaps, Races> RegionsOfMaps_To_Races;
-	RegionsOfMaps region_name; // SHOULD THIS BE REMOVED?!!!
+	//RegionsOfMaps region_name; // SHOULD THIS BE REMOVED?!!!
 	Races race;
 	int raceMultiplicity;
 	PowerBadges powerBadge;

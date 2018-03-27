@@ -41,6 +41,9 @@ void Graph::addRegionPlusData(RegionsOfMaps region, VertexData vertexData) {
 
 void Graph::buildMap() {
 
+		typedef boost::adjacency_list<boost::vecS, boost::vecS, VertexData, boost::no_property> MyGraphType;
+		boost::add_edge(RegionsOfMaps::FIVE_PLAYER_MAP__FARMLAND_EIGHT,RegionsOfMaps::FIVE_PLAYER_MAP__FARMLAND_FIVE);
+
 	    //typedef labels
 	    typedef boost::graph_traits<BoostGraph>::vertex_descriptor vertex;
 	    typedef boost::graph_traits<BoostGraph>::edge_descriptor edge;
@@ -1022,15 +1025,57 @@ void Graph::buildMap() {
 //		std::cout << "ratman" << boost::core::demangle(typeid(j).name()) << "rodentman" << std::endl;
 }
 
-bool Graph::contains(RegionsOfMaps r) {
+bool Graph::isAlreadyConquered(RegionsOfMaps potentiallyAlreadyConqueredRegion) {
 
-	// TODO
+	for(int i = 0; i < playerConqueredRegions.size(); i++) {
+
+		if( potentiallyAlreadyConqueredRegion == playerConqueredRegions.at(i) ) {
+
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool Graph::isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer) {
 
+	for(int i = 0; i < playerConqueredRegions.size(); i++) {
+
+		RegionsOfMaps currentConqueredRegion = playerConqueredRegions.at(i);
+		std::vector<RegionsOfMaps> regionsAdjacentToCurrentConqueredRegion = masterAdjacencyList.at(currentConqueredRegion);
+
+		for(int j = 0; j < regionsAdjacentToCurrentConqueredRegion.size(); j++) {
+
+			if( regionToPotentiallyConquer == regionsAdjacentToCurrentConqueredRegion.at(j) ) {
+
+				return true;
+			}
+		}
+	}
+
 	return false;
 }
+
+/*bool Graph::isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer) {
+
+	std::vector<RegionsOfMaps> yo = masterAdjacencyList.at(regionToPotentiallyConquer);
+
+//	RegionsOfMaps currentRegionThatIsAlreadyConqueredByThisPlayer = playerAdjacencyList.begin();
+
+	for(RegionsOfMaps currentConqueredRegion = playerAdjacencyList.begin(); currentConqueredRegion != playerAdjacencyList.end(); ++currentConqueredRegion) {
+
+		if( masterAdjacencyList.count(currentConqueredRegion) != 0 ) {
+
+			if( masterAdjacencyList.at(currentConqueredRegion) == regionToPotentiallyConquer ) { // is regionToPotentiallyConquer adjacent to currentConqueredRegion
+
+				return true;
+			}
+		}
+	}
+
+	return false;
+}*/
 
 Graph::~Graph() {
 

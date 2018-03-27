@@ -101,7 +101,7 @@ bool Player::isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer) {
 
 bool Player::isConquered(RegionsOfMaps r) {
 
-	return subgraph->contains(r);
+	return subgraph->isAlreadyConquered(r);
 }
 
 int Player::getMultiplicityOfRaceTokensInGivenRegion(RegionsOfMaps r) {

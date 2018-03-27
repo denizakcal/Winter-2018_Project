@@ -35,6 +35,7 @@ void TextualUserInterface::displayPauseScreen() {
 
 	if(choice == 1) {
 
+		std::cout << "The game is now being resumed." << std::endl;
 		displayCurrentSnapshotOfGame();
 	}
 	else /* if(choice == 2) */ {
@@ -51,6 +52,20 @@ void TextualUserInterface::displayMainMenuScreen() {
 	std::cout << "Here are your options.:" << std::endl;
 	std::cout << "1) Start a new game." << std::endl;
 	std::cout << "2) Load an already-existing game." << std::endl;
+
+	int choice;
+	std::cin >> choice;
+
+	if(choice == 1) {
+
+//		displayCurrentSnapshotOfGame();
+		displayNumbefOfPlayersSelectionScreen();
+	}
+	else /* if(choice == 2) */ {
+
+//		std::cout << "Saving the game." << std::endl;
+		//saveGame();
+	}
 }
 
 void TextualUserInterface::displayMapSelectionScreen() {

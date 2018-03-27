@@ -289,7 +289,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		players.push_back(p);
 	}
 
-	return TheGame(players);
+	return TheGame(players, this);
 }
 
 void UserInterface::saveGame(TheGame theGame) {

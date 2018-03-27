@@ -24,7 +24,14 @@ class Graph {
 
 private:
 	int numberOfPlayers;
-	//create typedef for graph type
+
+	static std::map< RegionsOfMaps, std::vector<RegionsOfMaps> > masterAdjacencyList;
+	static std::map< RegionsOfMaps, VertexData > regionInformation; // Only a static version is needed; a Player can use this with playerAdjacencyList.
+
+	//std::map< RegionsOfMaps, std::vector<RegionsOfMaps> > playerAdjacencyList;
+	std::vector<RegionsOfMaps> playerConqueredRegions;
+
+	/*//create typedef for graph type
 	typedef boost::adjacency_list
 		<boost::vecS,
 		boost::vecS,
@@ -33,7 +40,7 @@ private:
 		>BoostGraph;
 
 	//instantiate graph type
-	BoostGraph g;
+	BoostGraph g;*/
 public:
 	Graph(int numberOfPlayers_);
 	virtual ~Graph();
@@ -41,7 +48,7 @@ public:
 	void buildMap();
 	void addRegionPlusData(RegionsOfMaps region, VertexData vertexData);
 	bool isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer);
-	bool contains(RegionsOfMaps r);
+	bool isAlreadyConquered(RegionsOfMaps r);
 };
 
 #endif /* GRAPH_HPP_ */
