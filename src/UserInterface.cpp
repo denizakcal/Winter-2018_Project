@@ -18,6 +18,7 @@ using namespace std;
 
 UserInterface::UserInterface(std::vector<Player> players) {
 	this->numberOfPlayers = players.size();
+	this->players = players;
 	this->isPaused = false;
 }
 

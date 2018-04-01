@@ -15,7 +15,7 @@ class TextualUserInterface : public UserInterface {
 		virtual void displayPauseScreen();
 		virtual void displayMainMenuScreen();
 		virtual void displayMapSelectionScreen();
-		virtual void displayNumbefOfPlayersSelectionScreen();
+		virtual void displayNumberOfPlayersSelectionScreen();
 };
 
 

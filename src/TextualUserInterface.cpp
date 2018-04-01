@@ -1,9 +1,6 @@
 #include "TextualUserInterface.hpp"
 
-TextualUserInterface::TextualUserInterface(std::vector<Player> players) : UserInterface(players) {
-
-	// TODO
-}
+TextualUserInterface::TextualUserInterface(std::vector<Player> players) : UserInterface(players) {/*Nothing more than just calling parent class' constructor.*/}
 
 void TextualUserInterface::displayCurrentSnapshotOfGame() {
 
@@ -13,6 +10,7 @@ void TextualUserInterface::displayCurrentSnapshotOfGame() {
 	isPaused = false;
 
 	std::cout << "Here's what each region on the map contains.:" << std::endl;
+	// WRITE THE CODE THAT DISPLAYS EACH REGION AND WHAT IS CONTAINED
 }
 
 void TextualUserInterface::displayPauseScreen() {
@@ -58,8 +56,8 @@ void TextualUserInterface::displayMainMenuScreen() {
 
 	if(choice == 1) {
 
-//		displayCurrentSnapshotOfGame();
-		displayNumbefOfPlayersSelectionScreen();
+		displayNumberOfPlayersSelectionScreen();
+		displayCurrentSnapshotOfGame();
 	}
 	else /* if(choice == 2) */ {
 
@@ -74,7 +72,7 @@ void TextualUserInterface::displayMapSelectionScreen() {
 	std::cout << "TODO" << std::endl;
 }
 
-void TextualUserInterface::displayNumbefOfPlayersSelectionScreen() {
+void TextualUserInterface::displayNumberOfPlayersSelectionScreen() {
 
 	std::cout << "Enter the amount of players that will be playing this game.:" << std::endl;
 	std::cin >> numberOfPlayers;

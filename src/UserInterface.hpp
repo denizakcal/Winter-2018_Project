@@ -12,6 +12,7 @@ class UserInterface {
 	protected:
 		int numberOfPlayers;// = 0;
 		bool isPaused;// = false;
+		std::vector<Player> players;
 
 	public:
 		UserInterface(std::vector<Player> players);
@@ -22,7 +23,7 @@ class UserInterface {
 		virtual void displayPauseScreen() = 0;
 		virtual void displayMainMenuScreen() = 0;
 		virtual void displayMapSelectionScreen() = 0;
-		virtual void displayNumbefOfPlayersSelectionScreen() = 0;
+		virtual void displayNumberOfPlayersSelectionScreen() = 0;
 };
 
 #endif /* USERINTERFACE_H_ */
