@@ -41,29 +41,38 @@ void TheGame::run() {
 
 	userInterface->displayMainMenuScreen();
 
-	while( totalTurnsSoFar < maximumAmountOfTurnsInTotal ) {
+	while( gameHasNextTurn() ) {
 
-		// gameplay continues
-		break;// temp line
+		userInterface->displayCurrentSnapshotOfGame();
+		userInterface->makeMove();
+		incrementTurn();
 	}
 }
 
-bool TheGame::nextTurn() { // false if there are no more turns; true if there are more turns
+bool TheGame::gameHasNextTurn() { // false if there are no more turns; true if there are more turns
 
 	if( totalTurnsSoFar == maximumAmountOfTurnsInTotal ) {
 
 		return false;
 	}
-	else if( turnOfPlayerN == getAmountOfPlayers() ) {
+	else {
+
+		return true;
+	}
+}
+
+void TheGame::incrementTurn() { // modifies the field, turnOfPlayerN, which represents the number of the player whose turn it is
+
+	if( turnOfPlayerN == getAmountOfPlayers() ) {
 
 		turnOfPlayerN = 1;
-		return true;
 	}
 	else {
 
 		turnOfPlayerN++;
-		return true;
 	}
+
+	totalTurnsSoFar++;
 }
 
 bool TheGame::isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens) { // is the die roll enough to conquer a region

@@ -16,10 +16,12 @@
 
 using namespace std;
 
-UserInterface::UserInterface(std::vector<Player> players) {
+UserInterface::UserInterface(std::vector<Player> players, bool* isPaused, int* turnOfPlayerN) {
+
 	this->numberOfPlayers = players.size();
 	this->players = players;
-	this->isPaused = false;
+	this->isPaused = isPaused;
+	this->turnOfPlayerN = turnOfPlayerN;
 }
 
 TheGame UserInterface::loadGame(std::string fileName) {

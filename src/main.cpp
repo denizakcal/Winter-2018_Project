@@ -22,7 +22,9 @@ int main(void) {
 	players.push_back(playerOne);
 	Player playerTwo;
 	players.push_back(playerOne);
-	TextualUserInterface tui(players);
+	int turnOfPlayerN = 1;
+	bool isPaused = false;
+	TextualUserInterface tui(players, &isPaused, &turnOfPlayerN);
 	TheGame theGame(players, &tui);
 	theGame.run();
 

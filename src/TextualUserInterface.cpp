@@ -1,13 +1,15 @@
 #include "TextualUserInterface.hpp"
 
-TextualUserInterface::TextualUserInterface(std::vector<Player> players) : UserInterface(players) {/*Nothing more than just calling parent class' constructor.*/}
+TextualUserInterface::TextualUserInterface(std::vector<Player> players, bool* isPaused, int* turnOfPlayerN) : UserInterface(players, isPaused, turnOfPlayerN) {
+	/*Nothing more than just calling parent class' constructor.*/
+}
 
 void TextualUserInterface::displayCurrentSnapshotOfGame() {
 
-	if(isPaused) {
+	if(*isPaused) {
 		std::cout << "The game is now resumed." << std::endl;
 	}
-	isPaused = false;
+	*isPaused = false;
 
 	std::cout << "Here's what each region on the map contains.:" << std::endl;
 	// WRITE THE CODE THAT DISPLAYS EACH REGION AND WHAT IS CONTAINED
@@ -16,7 +18,7 @@ void TextualUserInterface::displayCurrentSnapshotOfGame() {
 void TextualUserInterface::displayPauseScreen() {
 
 	std::cout << "The game is now paused." << std::endl;
-	isPaused = true;
+	*isPaused = true;
 
 	std::cout << "Here are your options.:" << std::endl;
 	std::cout << "1) Resume the game." << std::endl;
@@ -83,4 +85,26 @@ void TextualUserInterface::displayNumberOfPlayersSelectionScreen() {
 		std::cout << "Enter the amount of players that will be playing this game.:" << std::endl;
 		std::cin >> numberOfPlayers;
 	}
+}
+
+void TextualUserInterface::makeMove() {
+
+	int choice;
+
+	std::cout << "What would you like to do?" << std::endl;
+	std::cout << "The options are the following.:" << std::endl;
+
+	if(true) {//if( players.at(pl)->hasActiveRace() || playerNYo.hasGhoulsOrWtv() ) {
+
+		std::cout << "N) Put active race in decline." << std::endl;
+		std::cout << "N) Attempt to conquer a region." << std::endl;
+	}
+	else {
+
+		std::cout << "N) Choose (another) race + power-badge combination (if there ." << std::endl;
+	}
+
+	std::cin >> choice;
+
+	//std::cout << "N) XYZ" << std::endl;
 }

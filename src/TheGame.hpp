@@ -21,14 +21,15 @@ class TheGame {
 		void init(std::vector<Player> players, UserInterface* userInterface);
 
 	public:
-		TheGame(std::vector<Player> players);
+		/*TheGame(std::vector<Player> players);*/
 		TheGame(std::vector<Player> players, UserInterface* userInterface);
 		void run();
 		int getAmountOfPlayers();
 		bool isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens);
 		bool isConquerableWithoutRoll(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens);
 		void updateGame(TheGame);
-		bool nextTurn();
+		bool gameHasNextTurn();
+		void incrementTurn();
 };
 
 #endif /* THEGAME_HPP_ */
