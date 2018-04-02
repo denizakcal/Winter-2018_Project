@@ -25,7 +25,7 @@ int main(void) {
 	int turnOfPlayerN = 1;
 	bool isPaused = false;
 	TextualUserInterface tui(players, &isPaused, &turnOfPlayerN);
-	TheGame theGame(players, &tui);
+	TheGame theGame(players, &tui, 0);
 	theGame.run();
 
 	/*system("pause");*/

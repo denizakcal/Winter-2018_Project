@@ -8,7 +8,7 @@
 const int MAXIMUM_AMOUNT_OF_TURNS_PER_PLAYER = 10;
 int maximumAmountOfTurnsInTotal;
 std::vector<Player> players;
-int totalTurnsSoFar;
+int totalTurnsSoFar = 0;
 int turnOfPlayerN = 1;
 
 /*TheGame::TheGame(std::vector<Player> players) {
@@ -19,14 +19,19 @@ int turnOfPlayerN = 1;
 
 TheGame::TheGame(std::vector<Player> players, UserInterface* userInterface) {
 
-	init(players, userInterface);
+	init(players, userInterface, 0);
 }
 
-void TheGame::init(std::vector<Player> players, UserInterface* userInterface) {
+TheGame::TheGame(std::vector<Player> players, UserInterface* userInterface, int totalAmountOfTurnsSoFar) {
+
+	init(players, userInterface, totalAmountOfTurnsSoFar);
+}
+
+void TheGame::init(std::vector<Player> players, UserInterface* userInterface, int totalAmountOfTurnsSoFar) {
 
 	// Stuff specific to any object/instance of this class
 	this->players = players;
-	this->totalTurnsSoFar = 0;
+	this->totalAmountOfTurnsSoFar = totalAmountOfTurnsSoFar;
 	this->maximumAmountOfTurnsInTotal = MAXIMUM_AMOUNT_OF_TURNS_PER_PLAYER*getAmountOfPlayers();
 
 	this->userInterface = userInterface;
@@ -39,19 +44,26 @@ int TheGame::getAmountOfPlayers() {
 
 void TheGame::run() {
 
-	userInterface->displayMainMenuScreen();
-
 	while( gameHasNextTurn() ) {
 
-		userInterface->displayCurrentSnapshotOfGame();
+		if( totalAmountOfTurnsSoFar == 0 ) {
+
+			userInterface->displayMainMenuScreen();
+		}
+		else {
+
+			userInterface->displayCurrentSnapshotOfGame();
+		}
+
 		userInterface->makeMove();
+
 		incrementTurn();
 	}
 }
 
 bool TheGame::gameHasNextTurn() { // false if there are no more turns; true if there are more turns
 
-	if( totalTurnsSoFar == maximumAmountOfTurnsInTotal ) {
+	if( totalAmountOfTurnsSoFar == maximumAmountOfTurnsInTotal ) {
 
 		return false;
 	}
@@ -72,7 +84,7 @@ void TheGame::incrementTurn() { // modifies the field, turnOfPlayerN, which repr
 		turnOfPlayerN++;
 	}
 
-	totalTurnsSoFar++;
+	totalAmountOfTurnsSoFar++;
 }
 
 bool TheGame::isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens) { // is the die roll enough to conquer a region

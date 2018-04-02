@@ -36,7 +36,7 @@ void TextualUserInterface::displayPauseScreen() {
 	if(choice == 1) {
 
 		std::cout << "The game is now being resumed." << std::endl;
-		displayCurrentSnapshotOfGame();
+		displayCurrentSnapshotOfGame(); // The displayCurrentSnapshotOfGame() method takes care of the *isPaused = false; code.
 	}
 	else /* if(choice == 2) */ {
 

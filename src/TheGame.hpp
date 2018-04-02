@@ -16,13 +16,14 @@ class TheGame {
 		int maximumAmountOfTurnsInTotal;
 		std::vector<Player> players;
 		UserInterface* userInterface;
-		int totalTurnsSoFar;
+		int totalAmountOfTurnsSoFar;
 		int turnOfPlayerN = 1;
-		void init(std::vector<Player> players, UserInterface* userInterface);
+		void init(std::vector<Player> players, UserInterface* userInterface, int totalAmountOfTurnsSoFar);
 
 	public:
 		/*TheGame(std::vector<Player> players);*/
 		TheGame(std::vector<Player> players, UserInterface* userInterface);
+		TheGame(std::vector<Player> players, UserInterface* userInterface, int totalAmountOfTurnsSoFar);
 		void run();
 		int getAmountOfPlayers();
 		bool isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens);

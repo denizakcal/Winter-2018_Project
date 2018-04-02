@@ -49,7 +49,8 @@ TheGame UserInterface::loadGame(std::string fileName) {
 	int ithPerson = 0;
 	int numberOfPlayers = 5; // This temporarily sets it to the highest it could be, and the correct value is parsed later (in the run before the person-data parsing).
 	std::string currentParsedValue;
-	bool beforePersonDataParsing = true;
+	int beforePersonDataParsing = 1;
+	int totalAmountOfTurnsSoFar = 0;
 
 	AllDataOfOnePerson* allDataOfOnePerson;
 
@@ -57,11 +58,17 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 		while( getline(theFile, currentParsedValue, ',') ) {
 
-			if(beforePersonDataParsing) {
+			if(beforePersonDataParsing == 1) {
 
 				numberOfPlayers = std::stoi(currentParsedValue);
 				allDataOfOnePerson = new AllDataOfOnePerson[numberOfPlayers];
-				beforePersonDataParsing = false;
+				beforePersonDataParsing++;
+				continue;
+			}
+			else if(beforePersonDataParsing == 2) {
+
+				totalAmountOfTurnsSoFar = std::stoi(currentParsedValue);
+				beforePersonDataParsing++;
 				continue;
 			}
 
@@ -292,7 +299,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		players.push_back(p);
 	}
 
-	return TheGame(players, this);
+	return TheGame(players, this, totalAmountOfTurnsSoFar);
 }
 
 void UserInterface::saveGame(TheGame theGame) {
