@@ -21,7 +21,7 @@ int main(void) {
 	Player playerOne;
 	players.push_back(playerOne);
 	Player playerTwo;
-	players.push_back(playerOne);
+	players.push_back(playerTwo);
 	int turnOfPlayerN = 1;
 	bool isPaused = false;
 	TextualUserInterface tui(players, &isPaused, &turnOfPlayerN);
