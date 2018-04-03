@@ -9,6 +9,9 @@
 
 class TextualUserInterface : public UserInterface {
 
+	private:
+		virtual void printEachRegionAndItsData();
+
 	public:
 		TextualUserInterface(std::vector<Player> players, bool* isPaused, int* turnOfPlayerN);
 		virtual void displayCurrentSnapshotOfGame();

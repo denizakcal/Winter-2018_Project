@@ -14,9 +14,12 @@ using namespace boost;
 using namespace std;
 
 std::map< RegionsOfMaps, std::vector<RegionsOfMaps> > Graph::masterAdjacencyList;
+//std::map<RegionsOfMaps,std::vector<RegionsOfMaps>>::iterator theIterator;
 
 Graph::Graph(int numberOfPlayers_) {
 	numberOfPlayers = numberOfPlayers_;
+	buildMap();
+	Graph::theIterator = Graph::masterAdjacencyList.begin();
 }
 
 //method for to add vertices to empty graph or subgraph
@@ -352,7 +355,26 @@ bool Graph::isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer) {
 	return false;
 }*/
 
+RegionsOfMaps Graph::nextRegion() {
+
+	RegionsOfMaps r = Graph::theIterator->first;
+	Graph::theIterator++;
+
+	return r;
+}
+
+bool Graph::isAtBeginning() {
+
+	return Graph::theIterator == Graph::masterAdjacencyList.begin();
+}
+
+bool Graph::isAtEnd() {
+
+	return Graph::theIterator == Graph::masterAdjacencyList.end();
+}
+
 Graph::~Graph() {
 
 	// code
 }
+  

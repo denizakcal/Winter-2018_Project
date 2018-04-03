@@ -1,4 +1,8 @@
 #include "TextualUserInterface.hpp"
+#include <map>
+#include "Graph.hpp"
+#include "RegionsOfMaps.hpp"
+#include "RegionsOfMapsHelper.hpp"
 
 TextualUserInterface::TextualUserInterface(std::vector<Player> players, bool* isPaused, int* turnOfPlayerN) : UserInterface(players, isPaused, turnOfPlayerN) {
 	/*Nothing more than just calling parent class' constructor.*/
@@ -12,7 +16,18 @@ void TextualUserInterface::displayCurrentSnapshotOfGame() {
 	*isPaused = false;
 
 	std::cout << "Here's what each region on the map contains.:" << std::endl;
-	// WRITE THE CODE THAT DISPLAYS EACH REGION AND WHAT IS CONTAINED
+	printEachRegionAndItsData();
+}
+
+void TextualUserInterface::printEachRegionAndItsData() {
+
+	RegionsOfMaps r;
+
+	while( !Graph::isAtEnd() ) {
+
+		r = Graph::nextRegion();
+		std::cout << regionsOfMapsEnumToString(r) << std::endl;
+	}
 }
 
 void TextualUserInterface::displayPauseScreen() {

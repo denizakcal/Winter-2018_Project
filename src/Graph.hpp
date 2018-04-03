@@ -30,6 +30,7 @@ private:
 
 	//std::map< RegionsOfMaps, std::vector<RegionsOfMaps> > playerAdjacencyList;
 	std::vector<RegionsOfMaps> playerConqueredRegions;
+	static std::map<RegionsOfMaps,std::vector<RegionsOfMaps>>::iterator theIterator;
 
 	/*//create typedef for graph type
 	typedef boost::adjacency_list
@@ -49,6 +50,9 @@ public:
 	void addRegionPlusData(RegionsOfMaps region, VertexData vertexData);
 	bool isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer);
 	bool isAlreadyConquered(RegionsOfMaps r);
+	static RegionsOfMaps nextRegion();
+	static bool isAtBeginning();
+	static bool isAtEnd();
 };
 
 #endif /* GRAPH_HPP_ */
