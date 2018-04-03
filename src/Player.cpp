@@ -30,8 +30,6 @@ Player::Player() {
 
 	Graph subgraph(2);
 
-	std::string name;
-
 	int numberOfCoins = 0;
 
 	std::vector<RegionsOfMaps> conqueredRegions;
@@ -45,6 +43,8 @@ Player::Player() {
 	std::vector< std::vector<RegionPieces> > regionPiecesSets;
 
 	int playerNumber = ++Player::amountOfPlayers;
+
+	std::string name = "Player " + playerNumber;
 
 	std::map<int,int> pipToTimesRolledMap;
 
