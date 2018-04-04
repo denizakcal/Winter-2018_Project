@@ -3,6 +3,7 @@
 #include "Graph.hpp"
 #include "RegionsOfMaps.hpp"
 #include "RegionsOfMapsHelper.hpp"
+#include "GameBoard.hpp"
 
 TextualUserInterface::TextualUserInterface(std::vector<Player> players, bool* isPaused, int* turnOfPlayerN) : UserInterface(players, isPaused, turnOfPlayerN) {
 	/*Nothing more than just calling parent class' constructor.*/
@@ -20,12 +21,11 @@ void TextualUserInterface::displayCurrentSnapshotOfGame() {
 }
 
 void TextualUserInterface::printEachRegionAndItsData() {
-
 	RegionsOfMaps r;
 
-	while( !Graph::isAtEnd() ) {
+	while( !GameBoard::isAtEnd() ) {
 
-		r = Graph::nextRegion();
+		r = GameBoard::nextRegion();
 		std::cout << regionsOfMapsEnumToString(r) << std::endl;
 	}
 }

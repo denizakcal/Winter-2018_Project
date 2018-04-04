@@ -9,12 +9,14 @@
 #include "RegionsOfMaps.hpp"
 #include "TextualUserInterface.hpp"
 #include "TheGame.hpp"
+#include "GameBoard.hpp"
 
 using namespace boost;
 using namespace std;
 
 int main(void) {
 
+	GameBoard::buildGameBoard(2);
 //	TextualUserInterface ui;
 //	TheGame theGame = ui.loadGame("some_file.txt");
 	std::vector<Player> players;
