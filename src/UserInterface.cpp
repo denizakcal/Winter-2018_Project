@@ -35,6 +35,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		std::vector<RegionsOfMaps> conqueredRegions;
 		std::vector<Races> racesInConqueredRegions;
 		std::vector<int> racesMultiplicity;
+		std::vector<bool> racesActiveness;
 		std::vector<PowerBadges> powerBadges;
 		std::vector< std::vector<RegionPieces> > regionPiecesSets;
 		std::vector<int> regionPieceSetMultiplicityPerRegion;
@@ -179,7 +180,49 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 					break;
 				}
-				case 12: {
+
+				case 12: { // this case is for determining which race is active
+
+					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
+						std::string str = currentParsedValue;
+
+						bool activeness;
+
+						if( str == "true" ) {
+
+							activeness = true;
+						}
+						else {
+
+							activeness = false;
+						}
+
+						allDataOfOnePerson[ithPerson].racesActiveness.push_back( activeness );
+					}
+
+					for(int i = 1; i < allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; i++) {
+
+						getline(theFile, currentParsedValue, ',');
+						std::string str = currentParsedValue;
+
+						bool activeness;
+
+						if( str == "true" ) {
+
+							activeness = true;
+						}
+						else {
+
+							activeness = false;
+						}
+
+						allDataOfOnePerson[ithPerson].racesActiveness.push_back( activeness );
+					}
+
+					break;
+				}
+
+				case 13: { // INCREMENT CASE NUM FOR THIS AND ALL CASES BELOW YO!!!
 
 					int numberOfPowerBadges = allDataOfOnePerson[ithPerson].numberOfRegionsOccupied; // the # of power badges is the same amount as the # of regions occupied because each region has only 1 race, and each race is chosen with its accompanying PowerBadge.
 
@@ -196,7 +239,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 					break;
 				}
 				
-				case 13: {
+				case 14: {
 
 					if(allDataOfOnePerson[ithPerson].numberOfRegionsOccupied >= 1) {
 
@@ -214,7 +257,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 					break;
 				}
 				
-				case 14: {
+				case 15: {
 
 					// For last token set:
 
@@ -289,12 +332,13 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		std::vector<RegionsOfMaps> conqueredRegions = allDataOfOnePerson[i].conqueredRegions;
 		std::vector<Races> racesInConqueredRegions = allDataOfOnePerson[i].racesInConqueredRegions;
 		std::vector<int> racesMultiplicity = allDataOfOnePerson[i].racesMultiplicity;
+		std::vector<bool> racesActiveness = allDataOfOnePerson[i].racesActiveness;
 		std::vector<PowerBadges> powerBadges = allDataOfOnePerson[i].powerBadges;
 		std::vector< std::vector<RegionPieces> > regionPieces = allDataOfOnePerson[i].regionPiecesSets;
 		int playerNumber = allDataOfOnePerson[i].playerNumber;
 		std::map<int,int> pipToTimesRolledMap = allDataOfOnePerson[i].pipToTimesRolledMap;
 
-		Player p(multiplicityOfRaceTokensNotOnBoard,g,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, powerBadges, regionPieces, playerNumber, pipToTimesRolledMap);
+		Player p(multiplicityOfRaceTokensNotOnBoard,g,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, racesActiveness, powerBadges, regionPieces, playerNumber, pipToTimesRolledMap);
 
 		players.push_back(p);
 	}
