@@ -4,8 +4,10 @@
 #include "RegionsOfMaps.hpp"
 #include "RegionsOfMapsHelper.hpp"
 #include "GameBoard.hpp"
+#include "VertexData.hpp"
+#include "VertexDataHelper.hpp"
 
-TextualUserInterface::TextualUserInterface(std::vector<Player> players, bool* isPaused, int* turnOfPlayerN) : UserInterface(players, isPaused, turnOfPlayerN) {
+TextualUserInterface::TextualUserInterface(std::vector<Player*> players, bool* isPaused, int* turnOfPlayerN) : UserInterface(players, isPaused, turnOfPlayerN) {
 	/*Nothing more than just calling parent class' constructor.*/
 }
 
@@ -26,7 +28,19 @@ void TextualUserInterface::printEachRegionAndItsData() {
 	while( !GameBoard::isAtEnd() ) {
 
 		r = GameBoard::nextRegion();
-		std::cout << regionsOfMapsEnumToString(r) << std::endl;
+
+		for(unsigned int i = 0; i < players.size(); i++) {
+
+			if( players.at(i)->isConquered(r) ) {
+
+				//std::cout << "hello" << std::endl;
+				std::cout << "Region " << regionsOfMapsEnumToString(r) << " contains " << VertexDataHelper::vertexDataToString(players.at(i)->getDataInRegion(r)) << std::endl;
+			}
+			else {
+
+				std::cout << "Region " << regionsOfMapsEnumToString(r) << " contains nothing." << std::endl;
+			}
+		}
 	}
 }
 
@@ -102,24 +116,33 @@ void TextualUserInterface::displayNumberOfPlayersSelectionScreen() {
 	}
 }
 
-void TextualUserInterface::makeMove() {
+UserInterfaceCodes TextualUserInterface::makeMove() {
 
 	int choice;
 
 	std::cout << "What would you like to do?" << std::endl;
 	std::cout << "The options are the following.:" << std::endl;
 
-	if(true) {//if( players.at(pl)->hasActiveRace() || playerNYo.hasGhoulsOrWtv() ) {
+	if( players.at(*turnOfPlayerN-1)->hasActiveRace() ) {
 
-		std::cout << "N) Put active race in decline." << std::endl;
-		std::cout << "N) Attempt to conquer a region." << std::endl;
+		std::cout << "1) Put active race in decline." << std::endl;
+		std::cout << "2) Attempt to conquer a region." << std::endl;
 	}
 	else {
 
-		std::cout << "N) Choose (another) race + power-badge combination (if there ." << std::endl;
+		std::cout << "3) Choose (another) race + power-badge combination." << std::endl;
 	}
 
 	std::cin >> choice;
 
+	if(choice == 1) {
+
+		return UserInterfaceCodes::SELECTED_TO_DECLINE_ACTIVE_RACE;
+	}
+	else if(choice == 2) {
+
+
+	}
+	return UserInterfaceCodes::SELECTED_TO_DECLINE_ACTIVE_RACE;//temp line
 	//std::cout << "N) XYZ" << std::endl;
 }

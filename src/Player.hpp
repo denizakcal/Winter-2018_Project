@@ -15,18 +15,19 @@ class Player {
 
 	private:
 		std::string name;
-		Graph* subgraph = nullptr;
+		Graph subgraph;
 		int multiplicityOfRaceTokensNotOnBoard;
 		int numberOfCoins;
 		//std::vector<RegionsOfMaps> conqueredRegions;
 		std::vector<Races> racesInConqueredRegions;
 		std::vector<int> racesMultiplicity;
+		std::vector<bool> racesActiveness;
 		std::vector<PowerBadges> powerBadges;
 		std::vector< std::vector<RegionPieces> > regionPieces;
 		int playerNumber;
 		std::map<int,int> pipToTimesRolledMap;
 		static int amountOfPlayers;
-		void init(int multiplicityOfRaceTokensNotOnBoard, Graph subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<bool> racesActiveness, std::vector<PowerBadges> powerBadges, std::vector< std::vector<RegionPieces> > regionPiecesSets, int playerNumber, std::map<int,int> pipToTimesRolledMap);
+		void init(int multiplicityOfRaceTokensNotOnBoard, /*Graph subgraph,*/ std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<bool> racesActiveness, std::vector<PowerBadges> powerBadges, std::vector< std::vector<RegionPieces> > regionPiecesSets, int playerNumber, std::map<int,int> pipToTimesRolledMap);
 
 		/*typedef std::map<RegionsOfMaps,RegionPieces> RegionsOfMaps_To_RegionPieces;
 		typedef std::map<RegionsOfMaps,Races> RegionsOfMaps_To_Races;
@@ -34,16 +35,19 @@ class Player {
 		typedef std::map<RegionPieces,int> RegionPieces_To_RegionPieceMultiplicity;*/
 
 	public:
-		Player();/**/
+		Player();
 		Player(int multiplicityOfRaceTokensNotOnBoard, Graph subgraph, std::string name, int numberOfCoins, std::vector<RegionsOfMaps> conqueredRegions,std::vector<Races> racesInConqueredRegions, std::vector<int> racesMultiplicity, std::vector<bool> racesActiveness, std::vector<PowerBadges> powerBadges, std::vector< std::vector<RegionPieces> > regionPieces, int playerNumber, std::map<int,int> pipToTimesRolledMap);
 		virtual ~Player();
 		void setName(std::string name);
 		std::string getName();
-		void setSubgraph(Graph* subgraph);
+		void setSubgraph(Graph subgraph);
 		bool isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer);
 		bool isConquered(RegionsOfMaps r);
 		int getMultiplicityOfRaceTokensInGivenRegion(RegionsOfMaps r);
 		int roll(void);
+		VertexData getDataInRegion(RegionsOfMaps r);
+		void setActiveRaceInDecline();
+		bool hasActiveRace();
 		/*static std::vector<Player> generatePlayers();*/
 };
 

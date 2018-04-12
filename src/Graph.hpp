@@ -26,7 +26,7 @@ private:
 	int numberOfPlayers;
 
 //	static std::map< RegionsOfMaps, std::vector<RegionsOfMaps> > masterAdjacencyList;
-	static std::map< RegionsOfMaps, VertexData > regionInformation; // Only a static version is needed; a Player can use this with playerAdjacencyList.
+	std::map< RegionsOfMaps, VertexData > regionInformation; // Only a static version is needed; a Player can use this with playerAdjacencyList.
 
 	//std::map< RegionsOfMaps, std::vector<RegionsOfMaps> > playerAdjacencyList;
 	std::vector<RegionsOfMaps> playerConqueredRegions;
@@ -49,6 +49,7 @@ public:
 	void addRegionPlusData(RegionsOfMaps region, VertexData vertexData);
 	bool isAdjacentToConquered(RegionsOfMaps regionToPotentiallyConquer);
 	bool isAlreadyConquered(RegionsOfMaps r);
+	VertexData getDataOfVertex(RegionsOfMaps r);
 };
 
 #endif /* GRAPH_HPP_ */

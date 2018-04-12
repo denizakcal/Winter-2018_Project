@@ -17,17 +17,17 @@ int turnOfPlayerN = 1;
 	init(players, &tui);
 }*/
 
-TheGame::TheGame(std::vector<Player> players, UserInterface* userInterface) {
+TheGame::TheGame(std::vector<Player*> players, UserInterface* userInterface) {
 
 	init(players, userInterface, 0);
 }
 
-TheGame::TheGame(std::vector<Player> players, UserInterface* userInterface, int totalAmountOfTurnsSoFar) {
+TheGame::TheGame(std::vector<Player*> players, UserInterface* userInterface, int totalAmountOfTurnsSoFar) {
 
 	init(players, userInterface, totalAmountOfTurnsSoFar);
 }
 
-void TheGame::init(std::vector<Player> players, UserInterface* userInterface, int totalAmountOfTurnsSoFar) {
+void TheGame::init(std::vector<Player*> players, UserInterface* userInterface, int totalAmountOfTurnsSoFar) {
 
 	// Stuff specific to any object/instance of this class
 	this->players = players;
@@ -55,9 +55,20 @@ void TheGame::run() {
 			userInterface->displayCurrentSnapshotOfGame();
 		}
 
-		userInterface->makeMove();
+		implementMove( userInterface->makeMove() );
 
 		incrementTurn();
+	}
+}
+
+void TheGame::implementMove(UserInterfaceCodes code) {
+
+	switch(code) {
+
+		case UserInterfaceCodes::SELECTED_TO_DECLINE_ACTIVE_RACE: {
+
+			currentPlayer->setActiveRaceInDecline();
+		}
 	}
 }
 
@@ -84,42 +95,44 @@ void TheGame::incrementTurn() { // modifies the field, turnOfPlayerN, which repr
 		turnOfPlayerN++;
 	}
 
+	currentPlayer = players.at(turnOfPlayerN-1);
+
 	totalAmountOfTurnsSoFar++;
 }
 
-bool TheGame::isRollEnough(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens) { // is the die roll enough to conquer a region
+bool TheGame::isRollEnough(std::vector<Player*> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens) { // is the die roll enough to conquer a region
 
-	Player attackingPlayer = players.at(playerNumberOfAttackingPlayer-1); // the players are added in order of playerNumber to the vector
-	int dieAmount = attackingPlayer.roll();
+	Player* attackingPlayer = players.at(playerNumberOfAttackingPlayer-1); // the players are added in order of playerNumber to the vector
+	int dieAmount = attackingPlayer->roll();
 
 	Player* defendingPlayer;
 
 	for(unsigned int i = 0; i < players.size(); i++) {
 
-		if( players.at(i).isConquered(regionToPotentiallyConquer) ) {
+		if( players.at(i)->isConquered(regionToPotentiallyConquer) ) {
 
-			*defendingPlayer = players.at(i);
+			defendingPlayer = players.at(i);
 		}
 	}
 
-	return attackingPlayer.isAdjacentToConquered(regionToPotentiallyConquer) && multiplicityOfAttackingRaceTokens >= 1 && (multiplicityOfAttackingRaceTokens+dieAmount)-defendingPlayer->getMultiplicityOfRaceTokensInGivenRegion(regionToPotentiallyConquer);
+	return attackingPlayer->isAdjacentToConquered(regionToPotentiallyConquer) && multiplicityOfAttackingRaceTokens >= 1 && (multiplicityOfAttackingRaceTokens+dieAmount)-defendingPlayer->getMultiplicityOfRaceTokensInGivenRegion(regionToPotentiallyConquer);
 }
 
-bool TheGame::isConquerableWithoutRoll(std::vector<Player> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens) {
+bool TheGame::isConquerableWithoutRoll(std::vector<Player*> players, int playerNumberOfAttackingPlayer, RegionsOfMaps regionToPotentiallyConquer, int multiplicityOfAttackingRaceTokens) {
 
-	Player attackingPlayer = players.at(playerNumberOfAttackingPlayer-1); // the players are added in order of playerNumber to the vector
+	Player* attackingPlayer = players.at(playerNumberOfAttackingPlayer-1); // the players are added in order of playerNumber to the vector
 
 	Player* defendingPlayer;
 
 	for(unsigned int i = 0; i < players.size(); i++) {
 
-		if( players.at(i).isConquered(regionToPotentiallyConquer) ) {
+		if( players.at(i)->isConquered(regionToPotentiallyConquer) ) {
 
-			*defendingPlayer = players.at(i);
+			defendingPlayer = players.at(i);
 		}
 	}
 
-	return attackingPlayer.isAdjacentToConquered(regionToPotentiallyConquer) && multiplicityOfAttackingRaceTokens >= 1 && multiplicityOfAttackingRaceTokens - defendingPlayer->getMultiplicityOfRaceTokensInGivenRegion(regionToPotentiallyConquer);
+	return attackingPlayer->isAdjacentToConquered(regionToPotentiallyConquer) && multiplicityOfAttackingRaceTokens >= 1 && multiplicityOfAttackingRaceTokens - defendingPlayer->getMultiplicityOfRaceTokensInGivenRegion(regionToPotentiallyConquer);
 }
 
 void TheGame::updateGame(TheGame updatedGame) {

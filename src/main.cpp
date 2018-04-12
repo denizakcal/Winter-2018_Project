@@ -11,7 +11,7 @@
 #include "TheGame.hpp"
 #include "GameBoard.hpp"
 
-using namespace boost;
+//using namespace boost;
 using namespace std;
 
 int main(void) {
@@ -19,11 +19,11 @@ int main(void) {
 	GameBoard::buildGameBoard(2);
 //	TextualUserInterface ui;
 //	TheGame theGame = ui.loadGame("some_file.txt");
-	std::vector<Player> players;
+	std::vector<Player*> players;
 	Player playerOne;
-	players.push_back(playerOne);
+	players.push_back(&playerOne);
 	Player playerTwo;
-	players.push_back(playerTwo);
+	players.push_back(&playerTwo);
 	int turnOfPlayerN = 1;
 	bool isPaused = false;
 	TextualUserInterface tui(players, &isPaused, &turnOfPlayerN);

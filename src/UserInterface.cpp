@@ -16,7 +16,7 @@
 
 using namespace std;
 
-UserInterface::UserInterface(std::vector<Player> players, bool* isPaused, int* turnOfPlayerN) {
+UserInterface::UserInterface(std::vector<Player*> players, bool* isPaused, int* turnOfPlayerN) {
 
 	this->numberOfPlayers = players.size();
 	this->players = players;
@@ -320,7 +320,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 		}
 	}
 
-	std::vector<Player> players;
+	std::vector<Player*> players;
 
 	for(int i = 0; i < numberOfPlayers; i++) {
 
@@ -340,7 +340,7 @@ TheGame UserInterface::loadGame(std::string fileName) {
 
 		Player p(multiplicityOfRaceTokensNotOnBoard,g,playerName,numberOfCoins, conqueredRegions, racesInConqueredRegions, racesMultiplicity, racesActiveness, powerBadges, regionPieces, playerNumber, pipToTimesRolledMap);
 
-		players.push_back(p);
+		players.push_back(&p);
 	}
 
 	return TheGame(players, this, totalAmountOfTurnsSoFar);
